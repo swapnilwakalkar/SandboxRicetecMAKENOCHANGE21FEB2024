@@ -1,0 +1,418 @@
+<!--<apex:page id="MyFirstPDF" standardController="Proforma_Invoice__c" extensions="Invoice">
+    <apex:form id="form" style="box-shadow: 5px 10px #888888; padding: 25px; color: DeepGreen;">
+        <apex:pageBlock id="servicer">
+            <body>
+                <div style="page-break-after: always; margin: 20px 0;">
+                    <c:HeaderForQuotationPDF type="header" >
+                        <div >
+                            <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+                        </div>
+                    </c:HeaderForQuotationPDF>
+                    <c:HeaderForQuotationPDF type="header2" >
+                        <div >
+                            <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:110px"/>
+                        </div>
+                    </c:HeaderForQuotationPDF>
+                    <c:HeaderForQuotationPDF type="footer" >
+                        <div style="text-align: center; margin-bottom:20px; height:100px;">
+                            <img src="{!URLFOR($Resource.RicetecFooterLogo)}" style="width: 700px; height: 60px;" />
+                        </div>
+                    </c:HeaderForQuotationPDF>
+                    <apex:repeat value="{!InvoiceList}" var="inv">
+                        <table style ="width:100%; height: 100%;">
+                            <td style =" background-image: url('{!URLFOR($Resource.WaterMark)}'); background-repeat:no-repeat; background-size:cover; background-position: center; background-attachment: fixed; width:100%; height:100%;">
+                                <table colspan="10" style ="width:100%; height: 100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td colspan="10" style="text-align: center; font-weight: bold; font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">PROFORMA INVOICE</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="font-weight: bold; text-align: left;">Invoice No:</td>
+                                        <td colspan="5" style="font-weight: bold; text-align: right;">Date:<br/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: left;">{!inv.Invoice_Number__c}<br/></td>
+                                        <td colspan="5" style="text-align: right;">{!DAY(TODAY())}-{!MONTH(TODAY())}-{!YEAR(TODAY())}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="font-weight: bold;"> <br/>To. <br/></td>
+                                        <td colspan="5"  style="font-weight: bold;text-align: right;"><br/>Our Bank Details:<br/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: left;">{!inv.Customer_Name__c},<br/>{!inv.Building_No_Street__c},{!inv.Village__c}<br/>{!inv.City__c},{!inv.District__c}<br/>{!inv.State__c}, {!inv.Country__c}<br/></td>
+                                        <td colspan="5" style="text-align: right;">M/s. RICETECH MACHINERY INDIA PRIVATE LIMITED,<br/>Punjab National Bank,<br/>CC Account No: 2191202100000312<br/>Jeedimetla(Medchal) Branch<br/>IFSC Code: PUNB0219120</td>
+                                    </tr>
+                                </table>
+     <table  colspan="10" class="table-bordered" style ="width:100%; height: 100%; border: 1px solid black;-fs-table-paginate: paginate; border-spacing: 0;" cellspacing="0" cellpadding="0">
+         
+             <thead style="display: table-header-group;">  
+             <tr class="header-row">
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">SL.No.</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Machine Name</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray; text-align: center;">DESCRIPTION</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Unit Price</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Quantity</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Total Amount</th>
+             </tr>
+              </thead>
+           <apex:repeat value="{!ORDL}" var="ord">
+            <tr>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Serial_No__c}</td>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Machine_Name__c}</td>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Product_Description__c}</td>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Unit_Rate__c}</td>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Quantity__c}</td>
+                    <td style="text-align: Center; border: 1px solid black;">{!ord.Value__c}</td>
+            </tr>
+           </apex:repeat>
+           
+           <apex:outputPanel layout="none" style="page-break-before: always;"/>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Sub Total</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Sub_Total__c}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Packing Charges</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Packing_Charges_Amount__c}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Forwarding Charges 1%</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Forwarding_Charges_Amount__c}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><br/></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Commissioning Charges Rs. 10,000/- for each machine</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Commissioning_Charges__c}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;">Insurance 0.10%</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Insurance_Amount__c}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;">Total</td>
+                <td colspan="3" style="text-align: Center; border: 1px solid black;">{!inv.Total_Charges__c}</td>
+            </tr>
+            <tr class="header-row" align="left">
+                <td ></td>
+                <td ></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;">GST 18%</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.GST_Amount__c}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Grand Total</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Grand_Amount__c}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Amount Received</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Amount_Received__c}</td>
+            </tr>
+            <tr>
+               
+            <td colspan="2" ></td>
+                <td colspan="2" style="font-weight: bold; border: 1px solid black; background-color: Gray;;">Balance</td>
+                <td colspan="2" style="text-align: Center; border: 1px solid black;">{!inv.Balance_Amount__c}</td>
+            </tr>
+        <div style="page-break-after: always; margin: 10px 0;">
+            </div>
+        <table colspan="10" class="remark-details" Style="width:100%; height: 100%;">
+            <tr>
+                <td style="border: 1px solid black; white-space: wrap; word-wrap: break-word;">
+                    <br/>
+                    <strong>TERMS AND CONDITIONS</strong><br/>
+                    <br/>
+                    1. Price :Ex-our works, at Hyderabad.<br/>
+                    <br/>
+                    2. Forwarding :Included.<br/>
+                    <br/>
+                    3. Sales Tax :Included.<br/>
+                    <br/>
+                    4. Payment: 50% as advance along with your purchase Order and              
+                    balance 50% against proforma invoice prior to dispatch.            
+                    (All the payments should be drawn in favour of                  
+                    "RICETECH Machinery India Pvt.Ltd." Payble at Hyderabad.)              
+                    <br/>
+                    <br/>
+                    5. Delivery: 1 to2 weeks.<br/>
+                    <br/>
+                    6. Freight: To pay basis.<br/>
+                    <br/>
+                    <br/>
+                    7. Warranty: We accept responsibilities of manufacturing defects                
+                    only for a period of One year from the date of delivery.<br/>
+                    <br/>
+                    <br/>
+                    8. Validity: This PROFORMA INVOICE is valid for 15 days, unless extended.<br/>
+                    <br/>
+                    <br/>
+                    <strong>Note: For all the bought out items like electrical, electronic and etc. warranty,                  
+                        which Parent companies offer, the same will be forwarded to the customers.</strong><br/>
+                    <br/>
+                </td>
+            </tr>
+         </table>
+        <table colspan="10" class="table-bordered" style="font-family: Arial, sans-serif; width:100%; height: 100%;">
+            <tr>
+                <td colspan="2"><br/>
+                    <strong>Authorised Signatory (Customer)/Seal<br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    </strong>
+                </td>
+                <td colspan="2" style="text-align: right;"><br/>
+                    <strong>for Ricetech Machinery India Pvt. Ltd.<br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td colspan="5" style="text-align:left;">Name:</td>
+            </tr>
+            <tr>
+                <td>Designation:</td>
+                <td colspan="5" style="text-align:left;">Designation:</td>
+            </tr>
+            <tr>
+                <td>Place:</td>
+                <td colspan="5" style="text-align: left;">Place:</td>
+            </tr>
+            <apex:outputPanel layout="none" style="page-break-before: always;"/>
+        </table>
+         <br/>
+        <tr>
+             <td colspan="10" style="text-align: center;font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">For Contact: Tel: +914023195938 | Mobile: +91 9440624430 | Email: sales@ricetecmachinery.com</td>
+        </tr>
+                   </table>
+                   </td>
+                     </table>
+               </apex:repeat>
+             </div>
+            </body>
+        <apex:pageBlockButtons location="Bottom">
+        <apex:commandButton style="width:50%; align: center; border-radius: 5%; block-size: 50px; box-shadow: 5px 10px #888888; color: DeepGreen; font-size: 200%;"
+                                value="Save" action="{!save}" rerender="form" status="status" />
+        </apex:pageBlockButtons>
+     </apex:pageBlock>
+    </apex:form>
+</apex:page>-->
+
+<apex:page id="MyFirstPDF" standardController="Proforma_Invoice__c" extensions="Invoice">
+<apex:form id="form" style="border: 3px solid black;box-shadow: 5px 10px #888888;  padding: 25px;color: DeepGreen;">
+  <apex:pageBlock id="servicer">
+     <body style="border: 3px solid black;">
+      <table >
+         <table>
+                <tr>
+                    <td style="width: 100%; text-align: left;">
+                      <apex:image style="max-width: 100%; height: auto;" url="{$Resource.RicetecHeaderLogo}"/>
+                    </td>
+                    <td style="width: 100%; text-align: right;">
+                      <apex:image style="max-width: 100%; height: auto;" url="{$Resource.RicetecHeaderLogoRight}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center; font-weight: bold; font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">PROFORMA INVOICE</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: left;">Invoice No:</td>
+                    <td style="font-weight: bold; text-align: right;">Date:<br/></td>
+                </tr>
+             
+                <tr>
+                    <td style="text-align: left;"><br/></td>
+                    <td style="text-align: right;">{!DAY(TODAY())}-{!MONTH(TODAY())}-{!YEAR(TODAY())}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: left;">To.</td>
+                    <td style="font-weight: bold; text-align: right;">From</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"></td>
+                    <td style="text-align: right;"></td>
+                </tr>
+            </table>
+     <table class="table-bordered" style="font-family: Arial, sans-serif; width: 100%;">
+            <tr class="header-row">
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Model No.</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Machine Name</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">DESCRIPTION</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Unit Price</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Quantity</th>
+                <th style="font-weight: bold; border: 1px solid black; background-color: Gray;">Total Amount</th>
+            </tr>
+       <apex:repeat value="{!InvoiceList}" var="inv">
+            <tr>
+                    <td style="border: 1px solid black;">1</td>
+                    <td style="border: 1px solid black;">{!inv.Machine_Name__c}</td>
+                    <td style="border: 1px solid black;">{!inv.Description__c}</td>
+                    <td style="border: 1px solid black;">{!inv.Unit_Price__c}</td>
+                    <td style="border: 1px solid black;">{!inv.Quantity__c}</td>
+                    <td style="border: 1px solid black;">{!inv.Total_Amount__c}</td>
+            </tr>
+       </apex:repeat>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="border: 1px solid black; background-color: Gray;">Sub Total</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="border: 1px solid black; background-color: Gray;">Packing Charges</td>
+                <td colspan="2" style="border: 1px solid black; "></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="border: 1px solid black; background-color: Gray;">Forwarding Charges 1%</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><br/></td>
+                <td colspan="2" style="border: 1px solid black; background-color: Gray;">Commissioning Charges Rs. 10,000/- for each machine</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">Insurance 0.10%</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">Total</td>
+                <td colspan="3" style="border: 1px solid black;"></td>
+            </tr>
+            <tr class="header-row" align="left">
+                <td ></td>
+                <td ></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">GST 18%</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">Grand Total</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">Amount Received</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                
+            <!--<td colspan="2" style="border: 1px solid black;">* Rupees : Four Lakhs Sixty Seven Thousand Three Hundred Forty One</td>-->
+                <td colspan="2" ></td>
+                <td colspan="2" style="border: 1px solid black;background-color: Gray;">Balance</td>
+                <td colspan="2" style="border: 1px solid black;"></td>
+            </tr>
+        <table class="remark-details" Style="Width:100%;">
+            <tr>
+                <td style="border: 1px solid black;">
+                    <br/>
+                    <strong>TERMS AND CONDITIONS</strong><br/>
+                    <br/>
+                    1. Price :Ex-our works, at Hyderabad.<br/>
+                    <br/>
+                    2. Forwarding :Included.<br/>
+                    <br/>
+                    3. Sales Tax :Included.<br/>
+                    <br/>
+                    4. Payment: 50% as advance along with your purchase Order and				
+                    balance 50% against proforma invoice prior to dispatch.				
+                    (All the payments should be drawn in favour of  				
+                    "RICETECH Machinery India Pvt.Ltd." Payble at Hyderabad.)				
+                    <br/>
+                    <br/>
+                    5. Delivery: 1 to2 weeks.<br/>
+                    <br/>
+                    6. Freight: To pay basis.<br/>
+                    <br/>
+                    <br/>
+                    7. Warranty: We accept responsibilities of manufacturing defects 				
+                    only for a period of One year from the date of delivery.<br/>
+                    <br/>
+                    <br/>
+                    8. Validity: This PROFORMA INVOICE is valid for 15 days, unless extended.<br/>
+                    <br/>
+                    <br/>
+                    <strong>Note: For all the bought out items like electrical, electronic and etc. warranty,					
+                        which Parent companies offer, the same will be forwarded to the customers.</strong><br/>
+                    <br/>
+                </td>
+            </tr>
+         </table>
+        <table class="table-bordered" style="font-family: Arial, sans-serif; width: 100%;">
+            <tr>
+                <td colspan="2"><br/>
+                    <strong>Authorised Signatory (Customer)/Seal<br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    </strong>
+                </td>
+                <td colspan="2" style="text-align: right;"><br/>
+                    <strong>for Ricetech Machinery India Pvt. Ltd.<br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td colspan="2" style="text-align: right;">Name:</td>
+            </tr>
+            <tr>
+                <td>Designation:</td>
+                <td colspan="2" style="text-align: right;">Designation:</td>
+            </tr>
+            <tr>
+                <td>Place:</td>
+                <td colspan="2" style="text-align: right;">Place:</td>
+            </tr>
+        </table>
+        <tr>
+        <td>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </td>
+        </tr>
+        <tr>
+             <td colspan="2" style="text-align: center;font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">For Contact: Tel: +914023195938 | Mobile: +91 9440624430 | Email: sales@ricetecmachinery.com</td>
+        </tr>
+      </table>
+        </table>
+                     <apex:pageBlockButtons location="Bottom">
+            <apex:commandButton style="width:50%; align: center; border-radius: 5%;block-size: 50px;box-shadow: 5px 10px #888888;color: DeepGreen;font-size: 200%;" value="Save" action="{!save}"  rerender="Invoice" status="status" />  </apex:pageBlockButtons>
+ 
+        </body>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

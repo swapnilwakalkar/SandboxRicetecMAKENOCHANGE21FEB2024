@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validity__c</fullName>
+    <defaultValue>&quot;8. Validity: This PROFORMA INVOICE is valid for 15 days, unless extended.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Validity</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

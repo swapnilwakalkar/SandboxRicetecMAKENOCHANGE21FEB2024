@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+                <label>New Customer</label>
+            </value>
+            <value>
+                <fullName>Existing Customer-upgrade</fullName>
+                <default>false</default>
+                <label>Existing Customer-upgrade</label>
+            </value>
+            <value>
+                <fullName>Existing Customer-Replacement</fullName>
+                <default>false</default>
+                <label>Existing Customer-Replacement</label>
+            </value>
+            <value>
+                <fullName>Existing Customer-downgrade</fullName>
+                <default>false</default>
+                <label>Existing Customer-downgrade</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

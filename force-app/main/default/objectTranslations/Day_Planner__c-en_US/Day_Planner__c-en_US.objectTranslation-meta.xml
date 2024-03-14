@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Day Planner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Day Planner</value>
+    </caseValues>
+    <layouts>
+        <layout>Day Planner Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Day Planner</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Capture_Day_End_Location</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Capture_Day_Start_location</name>
+    </quickActions>
+    <recordTypes>
+        <label></label>
+        <name>Day_Planner_Create_Record_Type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Parent_Child_Restriction</name>
+    </validationRules>
+</CustomObjectTranslation>

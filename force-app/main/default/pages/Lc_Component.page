@@ -1,0 +1,11 @@
+<apex:page Controller="LC_Cntrl" showHeader="false" sidebar="false">
+    <apex:includeLightning />
+    <div id="lwcContainer"></div>
+    <script>
+        $Lightning.use("c:leadConvertButton", function() {
+            $Lightning.createComponent("c:leadConvertButton", { recordId: "{!recordId}" }, "lwcContainer", function(cmp) {
+                // Component is created and inserted into the container
+            });
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,184 @@
+<aura:component controller="StoreLocatorPoint" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="mapMarkers" type="Object" access="global"/>
+    <aura:attribute name="centerObj" type="Object" access="global" />
+    <aura:attribute name="zoomLevel" type="Integer" access="global" />
+    <aura:attribute name="markersTitle" type="String" access="global" />
+    <aura:attribute name="showFooter" type="Boolean" access="global" />
+    <aura:attribute name="recordId" type="string" access="global" />
+    <aura:attribute name="conObj" type="Mill_Planner__c[]" access="global" />
+    <aura:attribute name="frameSrc" type="String" access="global" />
+    <aura:attribute name="isloaded" type="Boolean" default="false" access="global" /> 
+    <aura:attribute name="dayStartLocation" type="String" access="global" />
+    <aura:attribute name="isShowdirections" type="Boolean" default="false" access="global" />
+    
+    
+    <aura:attribute name="remainingMapMarkers" type="Object" access="global"/>
+    <aura:attribute name="remainingStores" type="Object" access="global" />
+    <aura:attribute name="isRemainngStores" type = "Boolean"/>
+    <aura:attribute name="getAllLocations" type="List" />
+    <aura:attribute name="selectedLocation" type="String" />
+    <aura:attribute name="noStoresToLocate" type="Boolean" />
+    <aura:attribute name="latitude" type="String"/>
+    <aura:attribute name="longitude" type="String"/>
+    <aura:attribute name="minimumRadius" type="String" default = "5"/>
+    <aura:attribute name="isShowNearestLocations" type="Boolean" />
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    <aura:attribute name="searchByOption" type="Boolean" default="false"/>
+    <aura:attribute name="options" type="List" default="[
+                                                        {'label': 'Search by Current Location', 'value': 'curentLoc'},
+                                                        {'label': 'Search by Address', 'value': 'addressSearch'},
+                                                        {'label': 'Search by PinCode', 'value': 'pinCodeSearch'}
+                                                        ]"/>
+    <aura:attribute name="value" type="String" default="curentLoc"/>
+    <aura:attribute name="showAddressSearch" type="Boolean" default="false"/>
+    <aura:attribute name="showpinCodeSearch" type="Boolean" default="false"/>
+    <aura:attribute name="showRadiusButton" type="Boolean" default="false"/>
+    <aura:attribute name="pinCode" type="String"/>
+    <aura:attribute name="noStoresMessage" type="String"/>
+   
+    <!-- Init handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" access="global" />   
+    
+    <!--loading spinner start-->
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end-->  
+    
+    <div class="slds-section slds-is-open" aura:id="storesSection">
+        <h3 class="slds-section__title">
+            <button aria-controls="storesList" class="slds-button slds-section__title-action">
+                <span onclick="{!c.toggleSection}" data-auraId="storesSection">
+                    <lightning:icon iconName="utility:switch"
+                                    size="x-small"
+                                    class="slds-section__title-action-icon slds-button__icon_left"
+                                    alternativeText="button icon"
+                                    />
+                </span>
+                <span class="slds-truncate" title="STORES ON MAP">STORES ON MAP</span>
+            </button>
+        </h3>
+        <div class="slds-section__content" id="storesList">
+            <!-- the map component -->
+            <aura:if isTrue="{!v.mapMarkers.length > 0}" >
+                <aura:if isTrue="{!v.isloaded}">
+                    <lightning:card>
+                        <div class="slds-p-left_large">
+                            <lightning:button variant="brand" label="Back" title="Back" onclick="{!c.handleClickBack}" iconName="action:back"/>
+                        </div>
+                        <aura:if isTrue="{!v.isShowdirections}">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_2-of-3">
+                                    <div class="slds-m-around_x-small">
+                                        <iframe src="{!v.frameSrc}" width="100%" height="600px;" frameBorder="0" scrolling="no"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-col slds-size_1-of-3">
+                                    <div class="slds-m-around_x-small slds-text-heading_medium"> <b>{! v.markersTitle } &nbsp; ({!v.mapMarkers.length})
+                                        </b></div>
+                                    <aura:iteration items="{!v.mapMarkers}" var="mapMaker">
+                                        <table class="slds-table">
+                                            <tr>
+                                                <td>
+                                                    <lightning:icon iconName="standard:contact" />
+                                                </td>
+                                                <td style="text-align:left">
+                                                    <a>{!mapMaker.title}</a><br/>
+                                                    {!mapMaker.location.Street}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </aura:iteration>
+                                </div>
+                                
+                            </div>
+                            
+                            <aura:set attribute="else">
+                                <div class="slds-m-around_x-small">
+                                    <iframe src="{!v.frameSrc}" width="100%" height="600px;" frameBorder="0"/>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </lightning:card>
+                    <aura:set attribute="else">
+                      <lightning:button variant="brand" label="Route Plan" title="Roure Plan" onclick="{!c.handleClick}" iconName="action:web_link"/>
+                      <lightning:button variant="brand" label="Show Directions" title="Show Directions" onclick="{!c.ShowDirections}" iconName="action:web_link"/>
+                       
+                        <lightning:button variant="brand" label="Get NearBy Locations" title="Get Nearest Locations" onclick="{!c.handleNearestLocations}" iconName="action:web_link"/>
+                        <aura:if isTrue="{!v.isShowNearestLocations}">
+                            <div class="slds-p-top_x-small">
+                                <lightning:card title="">
+                                    <div class="slds-p-around_small">
+                                        <lightning:radioGroup name="Select Options"
+                                                              label="Select Options"
+                                                              options="{! v.options }"
+                                                              value="{! v.value }"
+                                                              onchange="{! c.handleSearchOptions }"
+                                                              type="radio"/> 
+                                    </div>
+                                    <aura:if isTrue="{!v.showAddressSearch}">
+                                        <div class="slds-p-around_small">
+                                           <c:addressSearch aura:id="addressSearch" onsenddata="{!c.handleReceivedLocation}"></c:addressSearch> 
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.showpinCodeSearch}">
+                                        <lightning:layoutItem flexibility="auto" class="slds-p-top_small slds-p-bottom_small"  size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="vertical-medium">  
+                                            <lightning:layout verticalAlign="center" multipleRows="true">
+                                                <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" padding="horizontal-medium" >
+                                                    <lightning:input type="number" name="input2" aura:id ="pincode"  value = "{!v.pinCode}" label="Enter the Pincode" required="true"  />
+                                                </lightning:layoutItem>
+                                            </lightning:layout>
+                                        </lightning:layoutItem>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.showRadiusButton}">
+                                        <lightning:layoutItem flexibility="auto" class="slds-p-top_small slds-p-bottom_small"  size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="vertical-medium">  
+                                            <lightning:layout verticalAlign="center" multipleRows="true">
+                                                <lightning:layoutItem flexibility="auto" size="4" smallDeviceSize="4" mediumDeviceSize="4" largeDeviceSize="4" padding="horizontal-medium" >
+                                                    <lightning:input type="number" name="input1" aura:id ="minRadius"  value = "{!v.minimumRadius}" label="Enter the Radius in KM" required="true"  />
+                                                </lightning:layoutItem>
+                                            </lightning:layout>
+                                        </lightning:layoutItem>
+                                    </aura:if>
+                                    <div class ="slds-p-around_small">
+                                        <lightning:layout  multipleRows="true">
+                                            <lightning:button label="Search" title="Search" variant = "brand" onclick="{! c.handleNearestLocationSearch }"/>
+                                        </lightning:layout>
+                                    </div>
+                                </lightning:card>
+                            </div>
+                        </aura:if>
+                      
+                        
+                        <aura:if isTrue="{!!v.noStoresToLocate}">
+                            <div class="slds-p-top_small">
+                                <lightning:map
+                                               mapMarkers="{!v.mapMarkers}"
+                                               center="{! v.centerObj }"
+                                               zoomLevel="{! v.zoomLevel }"
+                                               markersTitle="{! v.markersTitle }"
+                                               showFooter="{ !v.showFooter }" >
+                                </lightning:map>
+                            </div>
+                        </aura:if>
+                    </aura:set>               
+            </aura:if>
+            </aura:if>
+            <aura:if isTrue="{!v.noStoresToLocate}">
+                <div class="slds-p-top_x-small">
+                    <lightning:card  title="">
+                        <p class="slds-p-horizontal_small">
+                            <Strong class="slds-align_absolute-center colorRed" >{!v.noStoresMessage}</Strong>
+                        </p>
+                    </lightning:card>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

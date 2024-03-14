@@ -1,0 +1,86 @@
+<apex:page standardController="Day_Planner__c" extensions="GoogleMapDistanceCtrl" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" showHeader="false" lightningStylesheets="true" standardStylesheets="false">
+    <apex:includeLightning />
+    <apex:form >
+        <apex:pageBlock >
+            <!--<apex:CommandButton value="Route Plan" onclick="initMap();"/>-->
+            <!--  <span id="total">
+<apex:param value="{!estimatedDistance}"/>
+</span>-->
+            <html>
+                <head>
+                    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                    <title>Google Maps API v3 Directions Example</title>
+                    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDiUJkRB6xUmdQQEcBqaysho7Wmu26oD9c&libraries=places"></script>
+                    </head> 
+                    <body style="font-family: Arial; font-size: 12px;"> 
+                        <div style="width: 100%;">
+                            <div id="map" style="width: 100%; height: 500px; float: left;"></div> 
+                            </div>
+                            
+                            <script type="text/javascript"> 
+                                window.onload=function initMap() {
+                                
+                                const map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 19,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                });
+                                const directionsService = new google.maps.DirectionsService();
+                                const directionsRenderer = new google.maps.DirectionsRenderer({
+                                    draggable: true,
+                                    map,
+                                    markerOptions:{
+                                        //  icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                                        title: 'Test',
+                                    },
+                                });
+                                
+                                directionsRenderer.addListener("directions_changed", () => {
+                                    const directions = directionsRenderer.getDirections();                     
+                                    
+                                });
+                                
+                                displayRoute(
+                                    new google.maps.LatLng('{!startDayVisitLat}', '{!startDayVisitLng}'),
+                                    new google.maps.LatLng('{!endDayVisitLat}', '{!endDayVisitLng}'),
+                                    directionsService,
+                                    directionsRenderer
+                                );
+                            }
+                            
+                            function displayRoute(origin, destination, service, display) {
+                                const waypts = [];
+                                var csvList = '{!storeVisitString}';
+                                csvList = csvList.replace('[','').replace(']','');
+                                var arrList = csvList.split(',');
+                                var arrListLen = arrList.length;
+                                for (var i = 0; i < arrListLen; i++) {
+                                    var start_lat = arrList[i].split(";",1);
+                                    var start_lon = arrList[i].split(";").pop();
+                                    waypts.push({
+                                        location: new google.maps.LatLng(start_lat, start_lon),
+                                        stopover: true,
+                                    });
+                                }
+                                
+                                service
+                                .route({
+                                    origin: origin,
+                                    destination: destination,
+                                    waypoints: waypts,
+                                    travelMode: google.maps.TravelMode.DRIVING,
+                                    avoidTolls: true,
+                                })
+                                .then((result) => {
+                                    display.setDirections(result);
+                                })
+                                    .catch((e) => {
+                                    
+                                });
+                                }
+                                    
+                                    </script>
+                </body> 
+            </html>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

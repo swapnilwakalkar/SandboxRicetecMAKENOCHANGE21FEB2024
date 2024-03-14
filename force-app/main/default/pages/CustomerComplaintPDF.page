@@ -1,0 +1,283 @@
+<apex:page standardStylesheets="false" standardController="Cases__c" extensions="Casescomplaintcontroller" renderAs="pdf">
+    <body>
+        <c:HeaderForCasesPDF type="header" > 
+            <div >
+                <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+            </div>
+        </c:HeaderForCasesPDF>
+        <c:HeaderForCasesPDF type="header2 " > 
+            <div >
+                <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:93px"/>
+            </div>
+        </c:HeaderForCasesPDF>
+        <c:HeaderForCasesPDF type="footer" >
+            <div style="text-align: center; margin-bottom:20px; height:100px;">
+                <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px; margin-top:10px" />
+            </div>
+            
+        </c:HeaderForCasesPDF>
+        <form>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td style="font-size: 12px;">
+                            Complaint No.: {!c.Name}<br/>
+                            Complaint Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Complaint_Date__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td colspan="2" style="font-weight: bold; font-size: 14px; text-align: center;">  
+                            RICETEC MACHINERY PVT.LTD.,<br/>
+                            Customer Complaint
+                        </td>
+                        <td colspan="2" style="font-weight: bold; font-size: 14px; text-align: center;">
+                            Format No.: RT/Serv/F 09<br/>
+                            Rev.No.: 02; Date: 05.09.14
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%" style ="font-size: 12px;">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td rowspan="3" width="40%"><b>Customer Name and Address:</b><br/>
+                            {!c.Customer_Name__c}<br/>
+                            {!c.Customer_Address__c}
+                        </td>
+                        
+                        <td colspan="2"><b>Machine Name : </b>{!c.Machine_Name__c}</td>
+                        <td colspan="2">Date of Dispatch :
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Date_of_Dispatch__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td colspan="2">Complaint Receipt Date: 
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Complaint_Receipt_Date__c}"/>
+                            </apex:outputText></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>Machine No. : </b>{!c.Machine_No__r.Name}</td>
+                        <td colspan="2">Date of Commissioning :
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Date_of_Commissioning__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td>Mode Of Receipt : {!c.ModeofReceipt__c}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Order No. : {!c.Ordernew__c}</td>
+                        <td colspan="3">Enclosures : {!c.Enclosures__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%" style="font-size: 12px;">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td >Sl. No. </td>
+                        <td style="font-weight: bold; text-align: center;">Complaint Details</td>
+                        <td style="text-align: center;">Complaint Classification</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">1</td>
+                        <td rowspan="3">{!c.Complaint_Details__c}</td>
+                        <td rowspan="3">{!c.Complaint_Classification__c}</td>
+                        <td>C C Acknowledged by: {!c.C_C_Acknowledged_by__c}</td>
+                    </tr>
+                    <tr>
+                        <td>IS CAPA Required?: {!c.IS_CAPA_Required__c}</td>
+                    </tr>
+                    <tr>
+                        <td>Re-Occurance: {!c.Re_Occurance__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%" style="font-size: 12px;">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td colspan="2" style="font-weight: bold; text-align: center;">Root Cause   </td>
+                        <td colspan="2" style="font-weight: bold; text-align: center;">Corrective Action </td>
+                        <td colspan="2" style="font-weight: bold; text-align: center;">Preventive Action</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 20px;">{!c.Root_Cause__c}</td>
+                        <td colspan="2" style="padding: 20px;">{!c.Corrective_Action__c}</td>
+                        <td colspan="2" style="padding: 20px;">{!c.Preventive_Action__c}</td>
+                    </tr>
+                    <tr>
+                        <td>Reviewed By: {!c.Reviewed_RBy__c}</td>
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Date__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td>Reviewed By: {!c.Reviewed_CBy__c}</td>
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Datec__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td>Reviewed By: {!c.Reviewed_PBy__c}</td>
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Datep__c}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%">
+                <tr>
+                    <td style="font-weight: bold; font-style: italic; font-size: 12px; text-align: center;">Cost Analysis</td> 
+                </tr>
+            </table>  
+            <table  style=" border-left: 1px solid black; font-size: 12px;" border="1" cellspacing="0" cellpadding="3" width="100%">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td>Consideration</td>
+                        <td>Details of Cost break up    </td>
+                        <td>Total Cost</td>
+                        <td rowspan="3">Obsesrvations status(QC) :
+                            {!c.Obsesrvations_status_QC__c}</td>
+                        <td rowspan="3">QC Sign : </td>
+                    </tr>
+                    <tr>
+                        <td>Transport Cost</td>
+                        <td>{!c.Details_of_Transport_Cost__c}</td>
+                        <td>{!c.Transport_Cost__c}</td>
+                    </tr>
+                    <tr> 
+                        <td>Rework Cost </td>
+                        <td>{!c.Details_of_Rework_Cost__c}</td>
+                        <td>{!c.Rework_Cost__c}</td>
+                    </tr>
+                    <tr>
+                        <td>Spares cost </td>
+                        <td>{!c.Details_of_Spares_Cost__c}</td>
+                        <td>{!c.Spares_cost__c}</td>
+                        <td>Stores GRN No. : {!c.Stores_GRN_No__c}</td>
+                        <td>Stores Signature : </td>
+                    </tr>
+                    <tr>
+                        <td>Designinig cost </td>
+                        <td>{!c.Details_of_Designing_Cost__c}</td>
+                        <td>{!c.Designinig_cost__c}</td>
+                        <td>Initial DC No. : {!c.Initial_DC_No__c}</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td>QC cost </td>
+                        <td>{!c.Details_of_QC_cost__c}</td>
+                        <td>{!c.QC_cost__c}</td>
+                        <td>Returnable DC No. : {!c.Returnable_DC_No__c}</td>
+                    </tr>
+                    <tr>
+                        <td>Others -    </td>
+                        <td>{!c.Details_of_Others__c}</td>
+                        <td>{!c.Others__c}</td>
+                        <td>Debit Note No. : {!c.Debit_Note_No__c}</td>
+                        <td>Accountant Sign. : </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="font-weight: bold; text-align: Right;">Total Cost    </td>
+                        <td>{!c.Total_Cost__c}</td>
+                        <td>Debit Note Date :
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.Debit_Note_Date__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td ></td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table  style=" border-left: 1px solid black; font-size: 12px;" border="1" cellspacing="0" cellpadding="3" width="100%">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td style="padding: 1px;">Sl. No.   </td>     
+                        <td>Name Of Participant </td>  
+                        <td>Signature   </td>    
+                        <td style="padding: 1px;">Sl. No.   </td>     
+                        <td>Name Of Participant </td>  
+                        <td>Signature   </td> 
+                        <td rowspan="3"><b>Verified Results :</b>
+                            {!c.Verified_Results__c}</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>     
+                        <td>{!c.Name_of_Participant__c}</td>  
+                        <td></td>  
+                        <td>2</td>     
+                        <td>{!c.Name_of2_Participant__c}</td>  
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>     
+                        <td>{!c.Name_of3_Participant__c}</td>  
+                        <td></td>  
+                        <td>4</td>     
+                        <td>{!c.Name_of4_Participant__c}</td>  
+                        <td></td>
+                    </tr>
+                    <!--<tr>
+                        <td></td>     
+                        <td></td>  
+                        <td></td>  
+                        <td></td>     
+                        <td></td>  
+                        <td></td>
+                    </tr>-->
+                    <tr>
+                        <td colspan="2">Received by Sign. : </td>     
+                        <td colspan="2">Checked by Sign.(ASM) : </td>  
+                        <td colspan="2">Verified  by Sign. (MR) : </td>   
+                        <td style="font-weight: bold;">Authorized Sign. : Director - Operations </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Date and Time: {!c.DateRB_Time__c}</td>     
+                        <td colspan="2">Date and Time: {!c.DateCB_Time__c}</td>  
+                        <td colspan="2">Date and Time:{!c.DateVB_Time__c}</td>  
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.DateDO__c}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <table style="border-bottom: 1px solid black; font-size: 12px; border-left: 1px solid black; border-right: 1px solid black;" 
+                   cellspacing="0" cellpadding="5" width="100%">
+                <apex:repeat var="c" value="{!cont}">
+                    <tr>
+                        <td>Prepared By : Incharge - Service</td>     
+                        <td>Reviewed By : Director - Operations</td>
+                        <td>Approved By : Managing Director</td>
+                    </tr>
+                    <tr>
+                        <td>Signature: </td>     
+                        <td>Signature:  </td>  
+                        <td>Signature: </td>     
+                    </tr>
+                    <tr>
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.DateIS__c}"/>
+                            </apex:outputText>
+                        </td>     
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.DateDp__c}"/>
+                            </apex:outputText>
+                        </td> 
+                        <td>Date:
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!c.DateAB__c}"/>
+                            </apex:outputText>
+                        </td>   
+                    </tr>
+                </apex:repeat>
+            </table>
+        </form>
+    </body>
+</apex:page>

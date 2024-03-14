@@ -1,0 +1,11 @@
+<apex:page standardController="Work_Order_for_Spares__c"  extensions="WorkOrderForSparesQuote" showHeader="false" title="Quotation PDF" showQuickActionVfHeader="false" >
+    <apex:form >  
+        <center>   
+            <apex:commandButton action="{!pdfAction}"  value="Save Attachment"/> 
+            <apex:commandButton action="{!Cancel}"  value="Cancel" /> </center> <br/>
+        <center>
+            <apex:iframe scrolling="true"  width="65%" height="1076px" src="/apex/WorkorderQuote?id={!MstrId}"/>
+        </center>
+    </apex:form><br/><br/><br/>
+    <footer ></footer>
+</apex:page>

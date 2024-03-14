@@ -1,0 +1,68 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" showHeader="false" lightningStylesheets="true" standardStylesheets="false" standardController="Day_Planner__c" extensions="GoogleShowDirectionsCtrl" >
+    <apex:slds />    
+    <apex:form style="font-family: Arial; font-size: 12px;">
+        <apex:outputLabel value="Start Location"/>
+        <apex:selectList size="1" value="{!startLocation}" onchange="startLocation(this);">
+            <apex:selectOptions value="{!startLocations}"/>     
+        </apex:selectList>&nbsp; &nbsp;
+        <apex:outputLabel value="End Location"/>&nbsp;
+        <apex:selectList size="1" value="{!endLocation}" onchange="endLocations(this);">
+            <apex:selectOptions value="{!endLocations}"/>
+        </apex:selectList>
+        &nbsp;
+        <apex:CommandButton value="Route Plan" onclick="myFunction();" onComplete="return null;"/>
+        <br/>
+        <br/>
+        <html>
+            <head>
+                <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                <title>Google Maps API v3 Directions Example</title> 
+                <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDiUJkRB6xUmdQQEcBqaysho7Wmu26oD9c&libraries=places"></script>
+                </head> 
+                <body style="font-family: Arial; font-size: 12px;"> 
+                    <div style="width: 100%;">
+                        <div id="map" style="width: 60%; height: 500px; float: left;"></div> 
+                        <div id="panel" style="width: 30%; float: left; padding-left: 10px"></div>
+                        </div>
+                        <script type="text/javascript"> 
+                            var startLocationLatLon;
+                function startLocation(data) {
+                    var startLocation = data.value;
+                    startLocationLatLon = startLocation;
+                }var endLocatioLatLon;
+                function endLocations(data){
+                    endLocation = data.value;
+                    endLocatioLatLon = endLocation;
+                }
+                function myFunction(){
+                    var directionsService = new google.maps.DirectionsService();
+                    var directionsRenderer = new google.maps.DirectionsRenderer();   
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom:12,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+                    directionsRenderer.setMap(map);
+                    directionsRenderer.setPanel(document.getElementById('panel'));
+                    var start_lat = startLocationLatLon.split(",",1);
+                    var start_lon = startLocationLatLon.split(",").pop();
+                    var end_lat = endLocatioLatLon.split(",",1);
+                    var end_lon = endLocatioLatLon.split(",").pop();  
+                    var request = {
+                        origin: new google.maps.LatLng(start_lat, start_lon), 
+                        destination: new google.maps.LatLng(end_lat, end_lon),
+                        optimizeWaypoints: true,
+                        avoidHighways: true,
+                        avoidTolls: true,
+                        travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    };
+                    directionsService.route(request, function(response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsRenderer.setDirections(response);
+                        }
+                    });
+                }
+                </script>
+            </body> 
+        </html>
+    </apex:form>
+</apex:page>

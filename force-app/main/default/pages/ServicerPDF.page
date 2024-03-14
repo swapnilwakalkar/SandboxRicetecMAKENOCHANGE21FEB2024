@@ -1,0 +1,384 @@
+<apex:page id="MyFourthPDF" standardController="Service_Report__c" extensions="Servicer" renderAs="PDF">
+    <apex:form id="form">
+            <div style="page-break-after: auto; margin: 20px 0;">
+                <c:HeaderForQuotationPDF type="header" >
+                    <div >
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="header2" >
+                    <div >
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="footer" >
+                    <div style="text-align: center; margin-bottom:20px; height:100px;">
+                        <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <table>
+                    <table Style="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0" >
+                        <apex:repeat value="{!serviceList}" var="ser">
+                            <tr>
+                                <td colspan="6" style="text-align: center; font-weight: bold; font-size: 20px;border: 1px solid black; background-color:#C0C0C0;color:black;padding:10px;"><u>SERVICE CALL REPORT</u></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="Width:50%;font-weight: bold; text-align: left;border-right-style: solid;padding: 1px;">Service No:</td>
+                                <td colspan="3" style="font-weight: bold; text-align: right;padding: 1px;">Date:<br/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;border-right-style: solid;width: 100%;padding: 1px;">{!ser.id}<br/></td>
+                                <td colspan="3" style="text-align: right;width: 100%;padding: 1px;">{!DAY(TODAY())}-{!MONTH(TODAY())}-{!YEAR(TODAY())}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="font-weight: bold; text-align: left;border-right-style: solid;padding: 1px;">Nature of Work:</td>
+                                <td colspan="3" style="font-weight: bold; text-align: right;padding: 1px;">RICETEC.MACHINERY(INDIA)PVT.LTD.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;border-right-style: solid;padding: 1px;">{!ser.Nature_Of_Work__c}</td>
+                                <td colspan="3" style="text-align: right;padding: 1px;">SURVEY NO. 177 PART,<br/> LAXMINAGAR COLONY,<br/>SURARAM,<br/> HYDERABAD 500 055,<br/>TS.INDIA.PHONE:+91-9440624438/39/30,<br/>HSN CODE: 84378020</td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                    <table style ="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                        <apex:repeat value="{!serviceList}" var="ser">
+                            <tr>
+                                <td colspan="1" style="border:1px solid black; text-align:center;Width:50%;background-color:#C0C0C0;color:black;"><b>Customer Details</b></td>
+                                <td colspan="1" style="border:1px solid black; text-align:center;Width:50%;background-color:#C0C0C0;color:black;"><b>Machinery Details</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;">Name of the Mill: {!ser.Mill_Name__r.Name}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Machine: {!ser.Machinery__r.Name}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;">Address: {!ser.Address__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;">Pin Code: {!ser.Pin_Code__c}</td> 
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Machines Sl.No.: {!ser.Machinery_Sl_Nos__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;">GST No.: {!ser.GST_No__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Year Of Manufacture: {!ser.Year_Of_Manufacture__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Customer Name: {!ser.Mill_Name__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Day-1-Date: {!ser.Day_1_Date__c} Start Time: {!ser.Start_Time_1d__c} End Time:{!ser.End_Time_1d__c} </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Customer Contact No: {!ser.Contact_No__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Day-2-Date: {!ser.Day_2_Date__c} Start Time: {!ser.Start_Time_2d__c} End Time: {!ser.End_Time_2d__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Contact Person: {!ser.Contact_No__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Day-3-Date: {!ser.Day_3_Date__c}  Start Time: {!ser.Start_Time_3d__c} End Time:{!ser.End_Time_3d__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Contact Number: {!ser.Contact_No__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Total No. of Days: {!ser.Total_No_of_Days__c}</td>
+                            </tr>
+
+                             </apex:repeat>
+                        </table>
+
+                    <table style ="width:100%;" border="1px solid black;" cellspacing="0" cellpadding="0">
+                        <apex:repeat value="{!serviceList}" var="ser">
+                            <tr>
+                                <td colspan="3" style="text-align: left;padding:1px;"><div style="word-wrap: break-word;">Customer Complaint:</div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;padding:1px;">Reason: {!ser.Reason__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;padding:1px;">Service Performed/Commissioning Report: {!ser.Service_Performed_or_Commssioning_Report__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style=" text-align: left;padding:1px;">Customer Feedback: {!ser.Customer_Feedback__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style=" text-align: left;padding:1px;">Customer Satisfaction Score: {!ser.Customer_Satisfaction_Score__c}</td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                    <table style ="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                        <apex:repeat value="{!serviceList}" var="ser">
+                            <tr>
+                                <td colspan="1" style="border:1px solid black; text-align:center;Width:50%;background-color:#C0C0C0;color:black;"><b>Order for Spares and Machinery</b></td>
+                                <td colspan="1" style="border:1px solid black; text-align:center;Width:50%;background-color:#C0C0C0;color:black;"><b>Proforma Invoice</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;"></td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Service Charges @Rs.3000/day.(Indian Customers Only)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;"></td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Service Charges Amount:{!ser.Service_Charge_Amount__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;"></td> 
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Spares / Others Amount: {!ser.Spares_Others_Amount__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align: left;padding:1px;"></td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">To and Fro and Conveyance Charges: {!ser.To_and_Fro_and_Conveyance_Charges__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Name of Customer:</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Total Amount: {!ser.Total_Amount__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Service Engineer Remarks:{!ser.Service_Engineer_Remarks__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Paid By:{!ser.Paid_By__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid; text-align:left; padding:1px;">Name of the Engineer:</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">Cheque No.:{!ser.Cheque_no__c} Dated: {!ser.Dated__c}</td>
+                            </tr>
+                             </apex:repeat>
+                        </table>
+                    <br/>
+                    <div style="page-break-after: always; margin: 10px 0;"></div>
+                    <apex:repeat value="{!serviceList}" var="ser">
+                        <table style ="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"><b>PRE CLEANER- MEGA/SMART,PCC</b></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"><b>LENGTH GRADER</b></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"><b>PADDY SAPARATOR</b></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;background-color:#C0C0C0;color:black;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Through put of the machine / hour </td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Through_put_of_the_machine_per_hr__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Degree of Inclination </td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Degree_of_Inclination__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">No. of Kgs./min.</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.No_of_Kgs_per_Min_Output__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Volume of Air Utilization %</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Volume_of_Air_Utilization__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">No. of Kgs./min.</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.No_of_Kgs_per_Min_for_Length_Grader__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Variety of Rice / Sieve SIze</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Variety_of_Rice_Sieve_SIze__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Aspiration setting No.</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Aspiration_setting_No__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_collection_for_Length_Grader__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_Collection_for_Paddy_Seperator__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Immature - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Immature__c}</td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;"><b>WHITENER</b></td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2" style="text-align: center; border: 1px solid black;padding:1px;"><b>ELEVATOR</b></td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Stone - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Stone_Input_or_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Broken - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Broken_Input_or_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Input and Output / min</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Input_and_Output__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Sand - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Sand_Input_or_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">No. of Kgs./min. (output)</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.No_of_Kgs_per_min_for_Whitener__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Height of the Elevator</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Height_of_the_Elevator__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Dust - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Dust_Input_or_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Pressure Gauge Reading</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Pressure_Gauge_Reading__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Pitch of the Bucket</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Pitch_of_the_Bucket__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Impurity - Input / Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Impurity__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Stone Grit</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Stone_Grit__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">RPM of the machine</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.RPM_of_Machine__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection -Input/Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_Collection_Input_or_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">AMP meter Reading</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.AMP_meter_Reading__c}</td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;"><b>BLOWERS</b></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection from conveyor</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_collection_from_conveyor__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection-Input/Output</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Sample_Collection_for_Whitener__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Number of Blowers</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Number_of_Blowers__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;"><b>VIBRO DESTONER</b></td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2" style="text-align: Center; border: 1px solid black;padding:1px;"><b>SILKY POLISHER</b></td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Blower 1,Blower 2,Blower 3</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Number_of_Blowers__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Paddy with stones</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Paddy_with_stones__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">No. of Kgs./min.</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.No_of_Kgs_per_Min_Output__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Impeller Direction</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Impeller_Direction__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">% of Damper Checking No.</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Damper_Checking_No__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Water Pump Pressure Reading</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Water_Pump_Pressure_Reading__c}</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">Volume of Air Utilization %</td>
+                                <td colspan="2" style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Vol_of_Air_Utilization_for_Blowers__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Volume of Air Utilization %</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Vol_of_air_Utilization_for_VD__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">AMP Reading</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.AMP_meter_Reading_for_Silky_Polisher__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Check Noise and Vibration</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Check_Noise_Vibration__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection- Input/Output</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_Collection_for_Vibro_Destoner__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Machine RPM</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.RPM_of_Machine__c}</td>
+                                <td colspan="2"  style="text-align: Center; border: 1px solid black;padding:1px;"><b>AIRLOCKS</b></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Center; border: 1px solid black;padding:1px;"><b>SHELLER / HUSKER</b></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection- Input/Output</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Sample_Collection_for_Silky_Polisher__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Number of Airlocks</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Number_of_Airlocks__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Through put of the machine / hour</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Through_put_of_machine_for_S_H__c}</td>
+                                <td colspan="2"  style="text-align: Center; border: 1px solid black;padding:1px;"><b>SIFTER</b></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Airlock 1  Airlock 2  Airlock 3</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Number_of_Airlocks__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border:1px solid black;padding:1px;">% of Shelling</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Percent_of_Shelling__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">No.of Kgs./min.</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.No_of_Kgs_per_min_for_Sifter__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Chain Coupling Alignment</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Chain_Coupling_Alignment__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Husk Output</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Husk_Output__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Variety of Rice / SIze</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Variety_of_Rice__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>     
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Loses of Grain in Husk</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Loses_of_Grain_in_Husk__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Type of Rice</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Type_of_Rice__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Vibro Scale Reading</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Vibro_Scale_Reading__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Sieve sizes of the machine</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Using_Sieve_sizes_of_the_machine__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Husker Floppers Adjustments</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Husker_Floppers_Adjustments__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Extra sieve sizes</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Extra_sieve_sizes__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Samples of Husk-Immature</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Samples_of_Husk_Immature__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">Samples collection - Input / Output</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;">{!ser.Sample_collection_for_Sifter__c}</td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                                <td colspan="2"  style="text-align: Left; border: 1px solid black;padding:1px;"></td>
+                            </tr>
+                        </table>
+                        <div style="page-break-after: always; margin: 10px 0;"></div>
+                        <table style ="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="2" style="border:1px solid black; text-align:center;Width:100%;background-color:#C0C0C0;color:black;padding:1px;"><b>Terms and Conditions:</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align: left;padding:1px;">{!ser.X1__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X10__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align: left;padding:1px;">{!ser.X2__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X11__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align: left;padding:1px;">{!ser.X3__c}</td> 
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X12__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align: left;padding:1px;">{!ser.X4__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X13__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align:left; padding:1px;">{!ser.X5__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X14__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align:left; padding:1px;">{!ser.X6__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X15__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align:left; padding:1px;">{!ser.X7__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X16__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align:left; padding:1px;">{!ser.X8__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X17__c}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="border-right-style: solid;text-align:left; padding:1px;">{!ser.X9__c}</td>
+                                <td colspan="1" style="text-align:left; width:50%; padding:1px;">{!ser.X18__c}</td>
+                            </tr>
+                        </table>
+                      
+                    </apex:repeat>
+                </table>
+           </div>
+    </apex:form>
+</apex:page>

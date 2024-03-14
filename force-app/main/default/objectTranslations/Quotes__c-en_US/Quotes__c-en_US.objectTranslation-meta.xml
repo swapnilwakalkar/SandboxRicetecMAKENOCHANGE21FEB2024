@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quotation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quotation</value>
+    </caseValues>
+    <layouts>
+        <layout>Quotes Layout</layout>
+        <sections>
+            <label></label>
+            <section>Charges Breakdown</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Competitors Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Prepared For</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Quote Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>TERMS AND CONDITIONS</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Quotes</layout>
+        <sections>
+            <label></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Prepared For</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Quote Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Totals</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Add_Product</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Create_Order</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Proforma_Invoice</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Create_PDF</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Preview_Quoted_Sample</name>
+    </webLinks>
+</CustomObjectTranslation>

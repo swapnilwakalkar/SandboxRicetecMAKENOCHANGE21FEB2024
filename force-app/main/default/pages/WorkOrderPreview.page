@@ -1,0 +1,27 @@
+<apex:page id="WorkOrder11" standardController="Work_Order_for_Spares__c" extensions="WorkPreviewController" renderas="pdf" applyBodyTag="false">
+    <head>
+         <style>
+            @page {
+            size: A4 portrait;
+            margin: 3mm;
+            }
+            
+            body {
+            font-family: sans-serif;
+            font-size: 11pt;
+            }
+            th {
+            min-height: 15px;
+            max-height: auto;
+            background:#ddd;
+            }
+            td {
+            min-height: 15px;
+            max-height: auto;
+            }
+        </style>
+    </head> 
+     <center>
+            <apex:iframe scrolling="true"  width="65%" height="1076px" src="/apex/Workorder?id={!MstrId}"/>
+        </center>
+</apex:page>

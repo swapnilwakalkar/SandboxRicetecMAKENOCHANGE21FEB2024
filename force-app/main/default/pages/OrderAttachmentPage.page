@@ -1,0 +1,320 @@
+<apex:page id="MySecondPDF" standardController="Order__c" extensions="OrderAttachment" >
+    <apex:form id="form">
+        <apex:pageBlock id="OrderAttachment">
+            <body>
+                <div style="page-break-after: always; margin: 20px 0;">
+                    <table>
+                        <td style =" background-image: url('{!URLFOR($Resource.WaterMark)}'); background-repeat:repeat; background-size:cover; background-position: center; background-attachment: fixed; width:100%; height:100%;">
+                            <table style="width:100%;">
+                                <c:HeaderForQuotationPDF type="header"> 
+                                    <div >
+                                        <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+                                    </div>
+                                </c:HeaderForQuotationPDF>
+                                <c:HeaderForQuotationPDF type="header2" > 
+                                    <div >
+                                        <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:110px"/>
+                                    </div>
+                                </c:HeaderForQuotationPDF>
+                                <c:HeaderForQuotationPDF type="footer" >
+                                    <div style="text-align: center; margin-bottom:20px; height:100px;">
+                                        <img src="{!URLFOR($Resource.RicetecFooterLogo)}" style="width: 700px; height: 60px;" />
+                                    </div>
+                                </c:HeaderForQuotationPDF>
+                                
+                                
+                                <table class="layout-frame" style="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                                    <apex:repeat value="{!OrderList}" var="ord">
+                                        <tr>
+                                            <td colspan="10" style="text-align: center; font-weight: bold; font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">FORM FOR AGREEMENT OF ORDER</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold; text-align: left;padding:1px;">Order No:</td>
+                                            <td style="font-weight: bold; text-align: right;padding:1px;">Date:<br/></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">{!ord.Name}<br/></td>
+                                            
+                                            <td style="text-align: right;padding:1px;">{!DAY(TODAY())}-{!MONTH(TODAY())}-{!YEAR(TODAY())}</td>
+                                        </tr>
+                                        <br/>
+                                        <tr>
+                                            <td style="font-weight: bold; text-align: left;">Customer Name and Address</td>
+                                            <td style="font-weight: bold; text-align: right;">Supplier Name and Address</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">{!ord.Customer_Name__c},<br/>{!ord.Building_No_Street__c},{!ord.Village__c},<br/>{!ord.City__c},{!ord.District__c},<br/>{!ord.State__c},{!ord.Country__c}.<br/></td>
+                                            <td style="text-align: right;padding:1px;">M/s. RICETECH MACHINERY INDIA PRIVATE LIMITED,<br/>Punjab National Bank,<br/>CC Account No: 2191202100000312<br/>Jeedimetla(Medchal) Branch<br/>IFSC Code: PUNB0219120</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">1) Person: {!ord.First_Concern_Person__c}</td>
+                                            <td style="text-align: right;padding:1px;">2) Person: {!ord.Second_Concern_Person__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">Phone No.: {!ord.Phone_1__c}</td>
+                                            <td style="text-align: right;padding:1px;">Phone No.:{!ord.Phone__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">Email-ID: {!ord.Email__c}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left;padding:1px;">GST No.: {!ord.GST_No__c}</td>
+                                            <td></td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                                <table class="table-bordered" style="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                                    <apex:repeat value="{!OrderList}" var="ord"> 
+                                        <tr class="header-row">
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">MACHINE CODE</th>
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">SL.NO</th>
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">DESCRIPTION</th>
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">QTY</th>
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">UNIT RATE (Rs)</th>
+                                            <th style="text-align: center;font-weight: bold; border: 1px solid black; background-color: Gray;padding:5px;">VALUE (Rs.)</th>
+                                        </tr>
+                                        <apex:repeat value="{!ORDL}" var="ord">
+                                            <tr>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Machine_Name__c}</td>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Serial_No__c}</td>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Product_Description__c}</td>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Quantity__c}</td>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Unit_Rate__c}</td>
+                                                <td style="text-align: Left; border: 1px solid black;padding:1px;">{!ord.Value__c}</td>
+                                            </tr>
+                                        </apex:repeat>
+                                        <tr>
+                                            <td colspan="1"> <strong>GIVE THE DETAILS OF VARIETY OF PADDY THAT WILL BE USED</strong></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Basic Order Value</td>
+                                            <td colspan="1" style="text-align: left; border: 1px solid black;padding:1px;">{!ord.Basic_Order_Value__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">1) ___________________________</td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Packing Charges</td>
+                                            <td colspan="1" style="text-align: left; border: 1px solid black;padding:1px;">{!ord.Package_Charges__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">2) ___________________________</td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Forwarding Charges</td>
+                                            <td colspan="1" style="text-align: left; border: 1px solid black;padding:1px;">{!ord.Forwarding_Charge__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">3) ___________________________</td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Commissioning Charges</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Commissioning_Charges__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">4) ___________________________<br/></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Engineering Charges</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Engineering_Charges__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">
+                                                <strong>A) GIVE THE GRIT SIZE OF THE WHITENER <br/></strong>
+                                            </td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Transportation Charges</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Transportation_Charges__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1">
+                                                <strong>B) GIVE THE SIEVE SIZE OF THE LENGTH GRADER,THIN and THICK GRADER</strong><br/>
+                                                _________________________________<br/>
+                                                
+                                                _________________________________<br/>
+                                            </td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Transit Insurance</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Transit_Insurance_Amount__c}</td>
+                                        </tr>
+                                        <tr class="header-row" align="left">
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">AGENT DETAILS:</td>
+                                            <td colspan="3" style="font-weight: bold; border: 1px solid black;padding:1px;">PART SHIPMENT</td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">Sub Total:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Sub_Total__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:left; border: 1px solid black; padding:1px;">
+                                                All the Payments should be made in favor of "RICETECH MACHINERY INDIA PRIVATE LIMITED"
+                                                payable at Hyderabad.<br/>
+                                                (No cash payments should be made under this order, payment should be made only by way of DD/Cheque/Online)<br/>
+                                            </td>
+                                            <td colspan="3" style="text-align: center; border: 1px solid black; padding:1px;">ALLOWED<br/><br/><br/>___________________<br/><br/><br/>NOT-ALLOWED</td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black; padding:1px;">CGST:</td>
+                                            <td colspan="1" style="text-align: left; border: 1px solid black; padding:1px;">{!ord.CGST_Amount__c}</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td style="font-weight: bold; border: 1px solid black;padding:1px;">Mode of Payment:</td>
+                                            <td colspan="3" style="font-weight: bold; border: 1px solid black;padding:1px;">Details:</td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">SGST:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.SGST_Amount__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">1) Cheque/DD</td>
+                                            <td colspan="3" style="text-align:left; border: 1px solid black;padding:1px;"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">IGST:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.IGST_Amount__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">2) RTGS</td>
+                                            <td colspan="3" style="text-align:left; border: 1px solid black;padding:1px;"></td>
+                                            <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:1px;">GRAND TOTAL:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Grand_Amount__c}</td>
+                                        </tr>  
+                                        <tr>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" >Advance:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Advance__c}</td>
+                                        </tr> 
+                                        <tr>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1">Balance:</td>
+                                            <td colspan="1" style="text-align:left; border: 1px solid black;padding:1px;">{!ord.Balance__c}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                </table>
+                                <table class="remark-details" Style="width:100%; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td style="text-align: left; border: 1px solid black;padding:1px;">
+                                            <strong>REMARKS / OTHER DETAILS:</strong><br/>
+                                            <br/>
+                                            NOTE: VALIDITY OF THIS ORDER IS 3 MONTHS FROM THIS DATE.<br/>
+                                            <br/>
+                                            1) Price: Ex-works, Hyderabad, Telangana State, India. Finalized Order value is inclusive of taxes applicable at the time of order finalization.<br/>
+                                            <br/>
+                                            2) Delivery: _____________ STRICTLY WHEN ALL THE TERMS ARE FULFILLED AS MUTUALLY AGREED AT THE TIME OF ORDER FINALIZATION.<br/>
+                                            <br/>
+                                            3) Terms of payment: 30% of the order value as advance along with the order for delivery commitment and balance against Proforma Invoice as mutually agreed. Delay in payment will attract simple interest @ 2% per month on the amount due from the committed date.<br/>
+                                            <br/>
+                                            4) Freight charges: To be borne by the customer.<br/>
+                                            <br/>
+                                            5) Cancellation of order: In case the order is canceled within 30 days of the order, the customer will forgo 10% of the advance amount of the total value. If canceled within 30 days of the dispatch date, the customer will forgo 100% of the advance payment.<br/>
+                                            <br/>
+                                            6) Please read the terms and conditions overleaf before signing the order.
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                <table class="table-bordered" style="font-family: Arial, sans-serif; width: 100%;">
+                                    <tr>
+                                        <td colspan="2"><br/>
+                                            <strong>Authorised Signatory (Customer)/Seal<br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </strong>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;"><br/>
+                                            <strong>For Ricetech Machinery India Pvt. Ltd.<br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td colspan="2" style="text-align: left;">Name:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Designation:</td>
+                                        <td colspan="2" style="text-align: left;">Designation:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Place:</td>
+                                        <td colspan="2" style="text-align: left;">Place:</td>
+                                    </tr>
+                                </table>
+                                
+                                <tr>
+                                    <td colspan="2" style="text-align: center;font-size: 20px; border-bottom: 1px solid black; background-color:Gray;">For Contact: Tel: +914023195938 | Mobile: +91 9440624430 | Email: sales@ricetecmachinery.com</td>
+                                </tr>
+                                <br/>
+                                <br/>
+                                <apex:outputPanel layout="none" style="page-break-before: always;"/>
+                                <table class="table-bordered" style="font-family: Arial, sans-serif; width: 100%;border: 1px solid black;">
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; font-weight: bold; font-size: 20px;background-color: Gray;">TERMS AND CONDITIONS</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="width: 100%;"> 					
+                                            <br/>
+                                            <strong>Taxes and Duties:</strong> If any increase/introduction/imposition of the taxes, duties, levies, etc., at the time of despatch 					
+                                            of the machinery  will have to be paid extra by customer<br/>					
+                                            <br/>		
+                                            <strong>Insurance and Transit Risk:</strong> Please note that unless and otherwise there is a specific instruction from your end for 					
+                                            covering transit insurance by us, we shall dispatch the consignments uninsured at your risk. You have to insure for all 					
+                                            transit and other risks at your end.<br/>					
+                                            <br/>		
+                                            <strong>Commissioning:</strong> Customer shall do proper electrification for the machines and should arrange proper relays, fit operator 					
+                                            and erection workmen at the time of commissioning of machines. RICETECH shall not be responsible for any 					
+                                            losses, if not arranged.<br/>					
+                                            <br/>		
+                                            <strong>Period of Warranty:</strong> Warranty period is 12 months from the date of invoice of the machinery towards any manufacturing 					
+                                            inadequate  workmanship. Damage due to natural calamities will not be covered under warranty. 					
+                                            The warranty shall cease in case RICETECH machines are serviced by any person other than the authorized service 					
+                                            technician of RICETECH. Customer shall not claim the warranty if the machine is  transferred or sold within the warranty 					
+                                            period. This warranty is subject to receipt of full payment made by  the customer to RICETECH as per agreed terms of the 					
+                                            orders.  All bought out items used in the machinery comes with warranty offered by Original manufacturer and same 					
+                                            will be passed on to the customer<br/>					
+                                            <br/>		
+                                            <strong>Force Majaure:</strong> If any time during continuance of this contract the performance in whole or in part of any obligation 					
+                                            under this contract shall be prevented or delayed by reasons of any war, hostility, act of public enmity, acts of civil 					
+                                            comotion, strikes, lockouts, sabotages, fire, floods, explosions, epidemics, quarantine, restrictions, or other acts of 					
+                                            natural calamities (hereinafter referred to as "eventualities"), customer shall not to make any claim from the company.<br/> 					
+                                            <br/>		
+                                            <strong>Arbitration:</strong>  Any dispute or difference whatsoever arising between the buyer and seller out of this sale shall be settled 					
+                                            by arbitration in accordance  with Arbitration Conciliation Act 1996 (as amended) shall be applicable, in case of any 					
+                                            differences, dispute or question arising out of this  sales between the Customer and RICETECH.<br/>					
+                                            <br/>		
+                                            <strong>Jurisdiction:</strong> In case of legal dispute, if any, the courts in Hyderabad/Rangareddy Districts shall be the place of jurisdiction.<br/>					
+                                            <br/>		
+                                            <strong>Confidentiality:</strong>  Customer agrees that they shall not disclose to a third party, any information provided under this 					
+                                            offer including commercial, technical information and protect trade secret rights.<br/>					
+                                            
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </table>
+                            <tr>
+                                <apex:pageBlockButtons location="Bottom">
+                                    <td colspan="2" style="width:100%;textalign: center;">
+                                        <apex:commandButton style="width:20%; textalign: center; border-radius: 5%;block-size: 50px;box-shadow: 5px 10px #888888;color: DeepGreen;font-size: 100%;" value="Save" action="{!save}"  rerender="OrderAttachment" status="status" />  
+                                    </td>
+                                </apex:pageBlockButtons>
+                            </tr>
+                        </td>
+                    </table>
+                </div>
+            </body>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

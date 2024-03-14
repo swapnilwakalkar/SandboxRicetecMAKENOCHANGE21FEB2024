@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X3__c</fullName>
+    <defaultValue>&quot;3.Customer should inform before one week from the date of commissioning to company on Cell No:  +91 9440624438 / 39.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>3.</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

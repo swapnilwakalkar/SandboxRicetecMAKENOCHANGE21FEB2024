@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunities</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunities</value>
+    </caseValues>
+    <layouts>
+        <layout>Community Opportunities Layout</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Competitors Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunities Layout</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Competitors Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Opportunity</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>ADD_PRODUCT</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Add_Product2</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>add_proaura</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>New</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Send_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Send_SMSs</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X14__c</fullName>
+    <defaultValue>&quot;14.Customer / Service Engineer should mention the Charges i.e., service amount, spares amount &amp; other charges in the Service Report clearly and intimate the same to Service Advisor +919440624438&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>14</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

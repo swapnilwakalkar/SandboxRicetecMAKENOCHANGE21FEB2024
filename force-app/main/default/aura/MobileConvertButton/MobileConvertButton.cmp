@@ -1,0 +1,4 @@
+<!-- myAuraComponent.cmp -->
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,lightning:actionOverride,lightning:isUrlAddressable" access="global" >
+  <c:leadConvertMobile recordId="{!v.recordId}" style="width: 100%;"/>
+</aura:component>

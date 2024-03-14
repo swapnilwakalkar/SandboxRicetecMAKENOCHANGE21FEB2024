@@ -1,0 +1,9 @@
+<apex:component >
+    <apex:attribute required="true"  type="string" name="type" description="specify header and footer type" />
+  
+     <apex:componentBody >
+      <td style =" background-image: url('{!URLFOR($Resource.WaterMark)}');background-repeat:no-repeat;background-size: contain;background-position: center;">
+    
+    </td>
+    </apex:componentBody>
+</apex:component>

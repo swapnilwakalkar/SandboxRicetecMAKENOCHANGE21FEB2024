@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cases</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cases</value>
+    </caseValues>
+    <layouts>
+        <layout>Community Cases layout</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Complaint Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Cost Analysis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Customer Complaint Communication Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Web Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>RiceTech_Case_Layout</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Complaint Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Cost Analysis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Customer Complaint Communication Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Web Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Cases</layout>
+        <sections>
+            <label></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Complaint Details Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Cost Analysis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Customer Complaint Communication Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Details of Cost Analysis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participant&apos;s Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Create_New_Work_Order</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Email</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Generate_Service_Report</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Save_and_send</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Create_Customer_Complaint_PDF</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Open_PDF_in_New_Window</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>casepdf</name>
+    </webLinks>
+</CustomObjectTranslation>

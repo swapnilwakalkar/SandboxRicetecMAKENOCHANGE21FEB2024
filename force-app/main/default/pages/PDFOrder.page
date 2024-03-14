@@ -1,0 +1,254 @@
+<apex:page id="MySecondPDF" standardController="Order__c" extensions="PDFOrderPage" language="en-IN" renderAs="pdf">
+    <div style="page-break-after:Auto; margin: 20px;">               
+                
+                <c:HeaderForQuotationPDF type="header2" >
+                    <div>
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="header" >
+                    <div>
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="footer" >
+                    <div>
+                        <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+                    </div>
+                </c:HeaderForQuotationPDF>
+                        <table style="Width:100%;border: 2px solid black;"cellspacing="0" cellpadding="0">
+                            <apex:repeat value="{!OrderList}" var="ord">
+                                <tr>
+                                    <td colspan="11" style="text-align: center; font-weight: bold; font-size: 20px; border-bottom: 1px solid black; background-color:#C0C0C0;">FORM FOR AGREEMENT OF ORDER</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="Width:50%; font-weight: bold; text-align: left; border-right-style: solid; ">Order No:</td>
+                                    <td colspan="3"style="font-weight: bold; text-align: right;">Date:<br/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left;border-right-style: solid; ">{!ord.Name}<br/></td>
+                                    <td colspan="3"style="text-align: right; ">{!DAY(TODAY())}-{!MONTH(TODAY())}-{!YEAR(TODAY())}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="font-weight: bold; text-align: left;border-right-style: solid;">Customer Name and Address</td>
+                                    <td colspan="3"style="font-weight: bold; text-align: right;">Supplier Name and Address</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left;border-right-style: solid; ">{!ord.Customer_Name__c},<br/>{!ord.Building_No_Street__c},{!ord.Village__c},<br/>{!ord.City__c},{!ord.District__c},<br/>{!ord.State__c},{!ord.Country__c}.<br/></td>
+                                    <td colspan="3"style="text-align: right; ">M/s. RICETECH MACHINERY INDIA PRIVATE LIMITED,<br/>Punjab National Bank,<br/>CC Account No: 2191202100000312<br/>Jeedimetla(Medchal) Branch<br/>IFSC Code: PUNB0219120<br/>HSN CODE: 84378020</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left; border-right-style: solid;">1) Person: {!ord.First_Concern_Person__c}</td>
+                                    <td colspan="3"style="text-align: right;">2) Person: {!ord.Second_Concern_Person__c}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left; border-right-style: solid;">Phone No.: {!ord.Phone_1__c}</td>
+                                    <td colspan="3"style="text-align: right;">Phone No.:{!ord.Phone__c}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left;border-right-style: solid;">Email-ID: {!ord.Email__c}</td>
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8"style="text-align: left; border-right-style: solid;">GST No.: {!ord.GST_No__c}</td>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </apex:repeat>
+                            <table class="table-bordered" style="width:100%; border: 1px solid black;-fs-table-paginate: paginate;"cellspacing="0" cellpadding="0">
+                                <thead style="display: table-header-group;">    
+                                    <tr>                
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">SL. NO</th>               
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">CODE</th>                 
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">DESCRIPTION</th>               
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">QTY</th>               
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">UNIT RATE (Rs)</th>               
+                                        <th style="text-align: Center;font-weight: bold; border: 1px solid black; background-color: #C0C0C0;padding:5px; ">VALUE (Rs.)</th>
+                                    </tr>
+                                </thead>
+                                <apex:repeat value="{!OrderList}" var="ord">
+                                    <apex:repeat value="{!ORDL}" var="ord">
+                                        <tr>
+                                            <td style="text-align: center; border: 1px solid black;">{!TEXT(ROUND(ord.Serial_No__c, 0))}</td>
+                                            <td style="text-align: center; border: 1px solid black;">{!ord.Machine_Name__c}</td>                   
+                                            <td style="text-align: Left; border: 1px solid black;">{!ord.Product_Description__c}</td>                    
+                                            <td style="text-align: center; border: 1px solid black;">{!TEXT(ROUND(ord.Quantity__c, 0))}</td>
+                                            <td style="text-align: center; border: 1px solid black;"><apex:outputText value="{0, number,  #,##,###}"><apex:param value="{!ROUND(ord.Unit_Rate__c, 0)}" /></apex:outputText></td>
+                                            <td style="text-align: center; border: 1px solid black;"><apex:outputText value="{0, number,  #,##,###}"><apex:param value="{!ROUND(ord.Value__c, 0)}" /></apex:outputText></td>
+       
+                                           <!-- <td style="text-align: center; border: 1px solid black;"><apex:outputText value="{0, number, ##,##,###}"><apex:param value="{!ROUND(ord.Unit_Rate__c, 0)}" /></apex:outputText></td>
+                                            <td style="text-align: center; border: 1px solid black;"><apex:outputText value="{0, number, ##,##,###}"><apex:param value="{!ROUND(ord.Value__c, 0)}" /></apex:outputText></td>
+                                        	-->
+											</tr>
+                                        
+                                    </apex:repeat>
+                                    <tr>
+                                        <td colspan="3"><c><strong>GIVE THE DETAILS OF VARIETY OF PADDY THAT WILL BE USED</strong></c></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Basic Order Value</td>
+                                        <td colspan="1" style="text-align: Center; border: 1px solid black;"><apex:outputText value="{!formattedBasicOrderValue}" rendered="{!NOT(ISNULL(ord.Basic_Order_Value__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">1) ___________________________________________</td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Packing Charges</td>         
+                                        <td colspan="1" style="text-align: Center; border: 1px solid black;"><apex:outputText value="{!formattedvalue}" rendered="{!NOT(ISNULL(ord.Package_Charges__c))}" /></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">2) ___________________________________________</td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Forwarding Charges</td>
+                                        <td colspan="1" style="text-align: Center; border: 1px solid black;"><apex:outputText value="{!formattedForwardingCharges}" rendered="{!NOT(ISNULL(ord.Forwarding_Charge__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">3) ___________________________________________</td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Commissioning Charges</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedCommissioningCharges}" rendered="{!NOT(ISNULL(ord.Commissioning_Charges__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">4) ____________________________________________<br/></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Engineering Charges</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedEngineeringCharges}" rendered="{!NOT(ISNULL(ord.Engineering_Charges__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><strong>A) GIVE THE GRIT SIZE OF THE WHITENER <br/></strong></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Transportation Charges</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedTransportationCharges}" rendered="{!NOT(ISNULL(ord.Transportation_Charges__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><strong>B) GIVE THE SIEVE SIZE OF THE LENGTH GRADER,THIN and THICK GRADER</strong><br/></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Transit Insurance</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedTransitInsuranceAmount}" rendered="{!NOT(ISNULL(ord.Transit_Insurance_Amount__c))}" /></td>
+                                    </tr>
+                                    <tr class="header-row" align="center">
+                                        <td colspan="3" style="font-weight: bold; border: 1px solid black; ">AGENT DETAILS:</td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">PART SHIPMENT</td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:15px;">Sub Total:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedSubtotal}" rendered="{!NOT(ISNULL(ord.Sub_Total__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="text-align:Center; border: 1px solid black;">                    
+                                            All the Payments should be made in favor of "RICETECH MACHINERY INDIA PRIVATE LIMITED"                   
+                                            payable at Hyderabad.<br/>(No cash payments should be made under this order, payment should be made only by way of DD/Cheque/Online)<br/>
+                                        </td>
+                                        <td colspan="1" style="text-align: Center; border: 1px solid black;">ALLOWED<br/><br/><br/>_______<br/><br/><br/>NOT-ALLOWED</td>                
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black;padding:15px;">CGST:</td>
+                                        <td colspan="1" style="text-align: Center; border: 1px solid black;"><apex:outputText value="{!formattedCGSTCharges}" rendered="{!NOT(ISNULL(ord.CGST_Amount__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="font-weight: bold; border: 1px solid black; ">Mode of Payment:</td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">Details:</td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">SGST:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedSGSTCharges}" rendered="{!NOT(ISNULL(ord.SGST_Amount__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="text-align:left; border: 1px solid black;">1) Cheque/DD </td>
+                                        <td colspan="1" style="text-align:left; border: 1px solid black;"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">IGST:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedIGSTCharges}" rendered="{!NOT(ISNULL(ord.IGST_Amount__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="text-align:left; border: 1px solid black;">2) RTGS</td>
+                                        <td colspan="1" style="text-align:left; border: 1px solid black;"></td>
+                                        <td colspan="1" style="font-weight: bold; border: 1px solid black; ">GRAND TOTAL:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedGrandTotal}" rendered="{!NOT(ISNULL(ord.Grand_Amount__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1" >Advance:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedAdvance}" rendered="{!NOT(ISNULL(ord.Advance__c))}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td colspan="1"></td>
+                                        <td colspan="1">Balance:</td>
+                                        <td colspan="1" style="text-align:Center; border: 1px solid black;"><apex:outputText value="{!formattedBalance}" rendered="{!NOT(ISNULL(ord.Balance__c))}" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                            <div style="page-break-after: always; margin: 10px 0;"></div>
+                            <table class="remark-details" Style="width:Auto; border: 1px solid black;" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="text-align: left; border: 1px solid black;"><strong>REMARKS / OTHER DETAILS:</strong><br/><br/>
+                                        NOTE: VALIDITY OF THIS ORDER IS 3 MONTHS FROM THIS DATE.<br/><br/>
+                                        1) Price: Ex-works, Hyderabad, Telangana State, India. Finalized Order value is inclusive of taxes applicable at the time of order finalization.<br/>
+                                        <br/>                    2) Delivery: _____________ STRICTLY WHEN ALL THE TERMS ARE FULFILLED AS MUTUALLY AGREED AT THE TIME OF ORDER FINALIZATION.<br/>
+                                        <br/>                    3) Terms of payment: 30% of the order value as advance along with the order for delivery commitment and balance against Proforma Invoice as mutually agreed. Delay in payment will attract simple interest @ 2% per month on the amount due from the committed date.<br/>
+                                        <br/>                    4) Freight charges: To be borne by the customer.<br/>
+                                        <br/>                    5) Cancellation of order: In case the order is canceled within 30 days of the order, the customer will forgo 10% of the advance amount of the total value. If canceled within 30 days of the dispatch date, the customer will forgo 100% of the advance payment.<br/>
+                                        <br/>                    6) Please read the terms and conditions overleaf before signing the order.
+                                    </td>      
+                                </tr>
+                            </table>
+                            <table class="table-bordered" style="font-family: Arial, sans-serif; width: 100%;"cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td colspan="2"><br/>
+                                        <strong>Authorised Signatory (Customer)/Seal<br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                        </strong>
+                                    </td>
+                                    <td colspan="2" style="text-align: right;"><br/>
+                                        <strong>for Ricetech Machinery India Pvt. Ltd.<br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td colspan="2" style="text-align: right;">Name:</td>
+                                </tr>
+                                <tr>
+                                    <td>Designation:</td>
+                                    <td colspan="2" style="text-align: right;">Designation:</td>
+                                </tr>
+                                <tr>
+                                    <td>Place:</td>
+                                    <td colspan="2" style="text-align: right;">Place:</td>
+                                </tr>
+                                <div style="page-break-after: always; margin: 10px 0;"></div>
+                                
+                                <apex:repeat value="{!OrderList}" var="ord">
+                                <table class="table-bordered" style="font-family: Arial, sans-serif; width:Auto;border: 1px solid black;"cellspacing="0" cellpadding="0">
+                                    
+                                    <tr>
+                                        <td colspan="10" style="text-align: center; font-weight: bold; font-size: 20px;background-color: #C0C0C0;">TERMS AND CONDITIONS</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Taxes_Duties__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Insurance_Transit_Risk__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Commissioning__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Period_of_Warranty__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Force_Majaure__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Arbitration__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Jurisdiction__c}</td> 
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: Left; border: 1px solid black;">{!ord.Confidentiality__c}</td> 
+                                    </tr>
+                                </table>
+                                    </apex:repeat>
+                            </table>
+                </table>
+            </div>
+</apex:page>

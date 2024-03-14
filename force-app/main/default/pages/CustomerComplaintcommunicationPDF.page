@@ -1,0 +1,135 @@
+<apex:page standardStylesheets="false" standardController="Cases__c" extensions="Casescontroller" renderAs="pdf">
+    <body>
+        <c:HeaderForQuotationPDF type="header" > 
+            <div >
+                <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+            </div>
+        </c:HeaderForQuotationPDF>
+        <c:HeaderForQuotationPDF type="header2 " >
+            <div >
+                <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:93px"/>
+            </div>
+        </c:HeaderForQuotationPDF>
+        <c:HeaderForQuotationPDF type="footer" >
+            <div style="text-align: center; margin-bottom:20px; height:100px;">
+                <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+            </div>
+        </c:HeaderForQuotationPDF>
+        <form>
+            <table border="1" cellspacing="0" cellpadding="5" width="100%" style="font-size: 13px;">
+                <tr>
+                    <td style="color: blue; font-size: 16px;">RICETECH MACHINERY INDIA PRIVATE LIMITED.</td>
+                    <td style="color: blue; font-size: 16px;"><b>Customer Complaint Communication</b></td>
+                    <td style="color: blue; font-size: 16px;">Format No.: RT / Serv / F 06<br/>
+                        Rev. No.: 01, Dt.: 07.08.2021
+                        Page No.: 1 of 1</td>
+                </tr>
+                <apex:repeat var="caseObj" value="{!cse}">
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Complaint No:</td>
+                        <td colspan="3">{!caseObj.Name}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Mill Name:</td>
+                        <td colspan="3">{!caseObj.Account_Name__r.Name}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Address :</td>
+                        <td colspan="3">{!caseObj.Customer_Address__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Customer Name:</td>
+                        <td colspan="3">{!caseObj.Customer_Name__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Customer Name 2:</td>
+                        <td colspan="3">{!caseObj.CustomerName2__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Phone Number:</td>
+                        <td colspan="3">{!caseObj.PhoneNumberNew__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Phone Number 2:</td>
+                        <td colspan="3">{!caseObj.PhoneNumber2__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Product Name:</td>
+                        <td colspan="3">{!caseObj.Machine_Name__c}</td>       
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Product No:</td>
+                        <td colspan="3">{!caseObj.Machine_No__r.Name}</td>        
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Machine MFD: </td>
+                        <td colspan="3">
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!caseObj.Machine_MFD__c}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Call Type:</td>
+                        <td colspan="3">{!caseObj.Call_Type__c}</td>        
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Complaint receipt date: </td>
+                        <td colspan="3">
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!caseObj.Complaint_Receipt_Date__c}"/>
+                            </apex:outputText>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Mode of receipt:</td>
+                        <td colspan="3">{!caseObj.ModeofReceipt__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">CC Acknowledged by:</td>
+                        <td colspan="3">{!caseObj.C_C_Acknowledged_by__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Service Engineer:</td>
+                        <td colspan="3">{!caseObj.Service_Engineer__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Engineer Allotment Date:</td>
+                        <td colspan="3">
+                            <apex:outputText value="{0,date,long}">
+                                <apex:param value="{!caseObj.Engineer_Allotment_Date__c}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Is CAPA Required:</td>
+                        <td colspan="3">{!caseObj.IS_CAPA_Required__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; text-align: right;">Re-occurrence:</td>
+                        <td colspan="3">{!caseObj.Re_Occurance__c}</td>
+                    </tr>
+                    <table border="1" cellspacing="0" cellpadding="5" width="100%" style="font-size: 13px;">
+                        <tr>
+                            <td style="font-weight: bold;" width="70%">Complaint Details:</td>
+                            <td style="font-weight: bold;">Complaint Classification:</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">{!caseObj.Complaint_Details__c}</td>
+                            <td>{!caseObj.Complaint_Classification__c}</td>
+                        </tr>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="5" width="100%" style="font-size: 13px;">
+                        <tr>
+                            <td><b>Enclosures (Photo / Audio) :</b> {!caseObj.Enclosures__c}</td>
+                        </tr>
+                    </table>
+                </apex:repeat>
+                <br/>
+                <tr>
+                    <td style="font-weight: bold; text-align: right; font-size: 13px;">Authorised Sign.:</td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page >
+    <div>
+     <apex:image style="max-width: 100%; height: auto;" url="{!$Resource.LetterheadIMG}"/>
+    </div>
+</apex:page>

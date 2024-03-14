@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Products</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Products</value>
+    </caseValues>
+    <layouts>
+        <layout>Opportunity Product Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Price Details Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product Line Item Layout</layout>
+        <sections>
+            <label></label>
+            <section>Charge&apos;s Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Product Line Item</layout>
+        <sections>
+            <label></label>
+            <section>Charge&apos;s Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Add_Product</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,5 @@
+<apex:component >
+    <div style="text-align: center; font-size: 12px;">
+        <img src="{!URLFOR($Resource.CompanyLogo4)}" style="width: 100px; height: auto;" />
+   </div>
+</apex:component>

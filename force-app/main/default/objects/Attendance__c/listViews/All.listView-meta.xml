@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Date__c</columns>
+    <columns>Representative__c</columns>
+    <columns>Present__c</columns>
+    <columns>LogIn_DateTime__c</columns>
+    <columns>Current_Location_Latitude__c</columns>
+    <columns>Current_Location_Longitude__c</columns>
+    <columns>LogOut_Datetime__c</columns>
+    <columns>Logout_Latitude__c</columns>
+    <columns>Logout_Longitude__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

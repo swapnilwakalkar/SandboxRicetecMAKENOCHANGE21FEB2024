@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_compact_layout</fullName>
+    <fields>Quote_Number__c</fields>
+    <fields>Opportunity_Name__c</fields>
+    <fields>AccountId__c</fields>
+    <fields>Date__c</fields>
+    <fields>Status__c</fields>
+    <label>New compact layout</label>
+</CompactLayout>

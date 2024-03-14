@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>surekha.yasam@lancesoft.in</email>
+    <name>ServiceQueue</name>
+    <queueMembers>
+        <roles>
+            <role>CEO</role>
+        </roles>
+        <users>
+            <user>admin_dev1@ricetec.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Inbound_Call_Report__c</sobjectType>
+    </queueSobject>
+</Queue>

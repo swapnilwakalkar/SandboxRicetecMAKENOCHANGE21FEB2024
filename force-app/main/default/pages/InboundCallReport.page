@@ -1,0 +1,106 @@
+<apex:page > 
+
+<!-- <apex:page id="icr" standardController="Inbound_Call_Report__c" extensions="Inboundcallcontroller" renderAs="pdf" >
+<apex:form id="form" style="border: 1px solid black;box-shadow: 5px 10px #888888;  padding: 25px;color: DeepGreen;">
+
+    <apex:pageBlock id="icr">
+      <table style ="width:100%; border: 2px solid black">
+               <tr>
+                    <td style="width: 40%; text-align: left;">
+                      <apex:image style="max-width: 100%; height: auto;" url="{!$Resource.CompanyLogo8}"/>
+                    </td>
+                    <td style="width: 10%; text-align: right;">
+                      <apex:image style="max-width: 100%; height: auto;" url="{!$Resource.RicetecSingleLogo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center; font-weight: bold; font-size: 20px; border-bottom: 1px solid black; background-color:Gray;"> INBOUND CALL REPORT</td>
+                </tr>
+                  
+   </table>
+          <apex:pageblock title="">
+          <table>
+              <apex:repeat value="{!Inbound_Call_Report__c}" var="ser">
+ <tr>
+                    <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Inbound Call Number:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b> {!ser.Name}</b></td>
+               </tr>
+
+
+
+ 
+
+ <tr>
+                    <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Customer Name:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Customer_Name__c}</b></td>
+               </tr>
+
+
+ <tr>
+                    <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Phone Number:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Phone_Number__c}</b></td>
+               </tr>
+
+
+
+ <tr>
+                    <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Mill Name:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Mill_Name__c}</b></td>
+               </tr>
+
+
+
+ <tr>
+                    <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Mill Address:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Mill_Address__c}</b></td>
+               </tr>
+
+
+<tr>
+              <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Call Receipt Date</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Call_Receipt_Date__c}</b></td>
+               </tr>
+
+
+
+<tr>
+              <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Call Ackonowledge By:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Call_Acknowledged_By__c}</b></td>
+               </tr>
+
+
+
+<tr>
+              <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Call Classification:- </b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Call_Classification__c}</b></td>
+               </tr>
+
+
+<tr>
+             <td colspan="3" style="text-align: Center-right;padding: 5px;"><b>Call Details:-</b></td>
+                    <td colspan="3" style="text-align: Center;padding: 5px;"><b>{!ser.Call_Details__c}</b></td>
+               </tr>
+               </apex:repeat>
+                  <br/>
+      
+               </table>
+     </apex:pageblock>         
+                 <br/>
+         <br/>
+         <br/>
+         <br/>
+
+<td style="font-weight: bold; text-align: left-bottom;">Authorised by:-</td>
+
+
+       
+       <!--  <apex:pageBlockButtons location="Bottom">
+            <apex:commandButton style="width:50%; align: center; border-radius: 5%;block-size: 50px;box-shadow: 3px 3px #888888;color: DeepGreen;font-size: 200%;" value="Save" action="{!save}"  rerender="Inboundcallcontroller" status="status" />  </apex:pageBlockButtons>
+
+ </apex:pageBlock>
+  </apex:form>
+   
+</apex:page>   -->
+
+
+</apex:page>

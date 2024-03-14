@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Area_selection</fullName>
+    <active>false</active>
+    <errorConditionFormula>Area__r.Parent_Location__c &lt;&gt; Mill_Name__r.Area__c</errorConditionFormula>
+    <errorMessage>Please select Appropriate area related to Day Planner</errorMessage>
+</ValidationRule>

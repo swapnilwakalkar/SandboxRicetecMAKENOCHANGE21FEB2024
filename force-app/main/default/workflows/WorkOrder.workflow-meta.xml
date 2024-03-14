@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>email_alert_ForApproval</fullName>
+        <description>email alert ForApproval1</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>admin_dev1@ricetec.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>pranav.t@lancesoft.in</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WorkOrdr</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Entry_Criteria</fullName>
+        <field>Status</field>
+        <literalValue>In Progress</literalValue>
+        <name>Entry Criteria</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>FinalUpdate</fullName>
+        <field>Status</field>
+        <literalValue>Completed</literalValue>
+        <name>FinalUpdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

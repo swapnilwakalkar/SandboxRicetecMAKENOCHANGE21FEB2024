@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_the_Duplicate_Amount_Value</fullName>
+    <active>true</active>
+    <description>Related to the Amount Number field</description>
+    <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Mode_of_Transport__c, &apos;Two Wheeler&apos;),
+        ISPICKVAL(Mode_of_Transport__c, &apos;Own Car&apos;)
+    ),
+    NOT(ISBLANK(Amount__c))
+)</errorConditionFormula>
+    <errorDisplayField>Amount__c</errorDisplayField>
+    <errorMessage>Amount should not be entered for &apos;Two Wheeler&apos; or &apos;Own Car&apos; transports. It will automatically calculate.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<template>
+  <lightning-card title="Location Tracker Map">
+    <div class="slds-var-p-around_small">
+      <lightning-map map-markers={markerVar} zoom-level="10" style="height: 350px;"></lightning-map>
+      <lightning-button label="Current Location" onclick={handleCheckInClick} class="slds-var-m-right_small"></lightning-button>
+    </div>
+  </lightning-card>
+</template>

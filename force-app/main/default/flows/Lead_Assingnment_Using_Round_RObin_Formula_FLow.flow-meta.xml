@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Lead_Assignment_using_round_robin_field_In_Lead_object</name>
+        <label>Lead Assignment using round robin field In Lead object</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Round_Robin_User1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Round_Robin__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Assignment_to_User1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Round Robin User1</label>
+        </rules>
+        <rules>
+            <name>Round_Robin_User2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Round_Robin__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Assignment_To_User2</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Round Robin User2</label>
+        </rules>
+    </decisions>
+    <description>Lead Assingnment Using Round RObin Formula FLow</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead Assingnment Using Round RObin Formula FLow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Assingnment Using Round RObin Formula FLow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Lead_Assignment_to_User1</name>
+        <label>Lead Assignment to User1</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0050T000003HWRzQAO</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Lead Assignment To User2</description>
+        <name>Lead_Assignment_To_User2</name>
+        <label>Lead Assignment To User2</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0050T000003TN0ZQAW</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Lead_Assignment_using_round_robin_field_In_Lead_object</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Round_Robin_Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Leads__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

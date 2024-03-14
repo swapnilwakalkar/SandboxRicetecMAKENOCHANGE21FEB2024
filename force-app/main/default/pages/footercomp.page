@@ -1,0 +1,6 @@
+<apex:page >
+    <div>
+        <br/> <br/> <br/> <br/>
+        <img src="{!URLFOR($Resource.CompanyLogo4)}" style="width: 700px; height: auto;" />
+    </div>
+</apex:page>

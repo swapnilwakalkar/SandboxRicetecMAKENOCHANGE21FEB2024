@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-04-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Products" icon-name="standard:product_required">
+        <div class="slds-m-around_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-input type="search" label="Search Products" onchange={handleSearch}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <div style="height: 200px">
+                <template if:true={data}>
+                    <lightning-datatable key-field="Id" data={data} columns={columns} draft-values={saveDraftValues} onsave={saveHandleAction} onrowselection={handleRowSelection} show-row-number-column="true">
+                    </lightning-datatable>
+                </template>
+                <template if:true={error}>
+                    <p>{error}</p>
+                </template>
+            </div>
+        </div>
+        <div if:true={data} if:false={isDataLoaded}>
+            <lightning-button label="Cancel" variant="neutral" onclick={closeAction} class="slds-m-right_x-small"></lightning-button>
+            <lightning-button label="Save" variant="brand" onclick={handleSave} class="slds-m-right_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

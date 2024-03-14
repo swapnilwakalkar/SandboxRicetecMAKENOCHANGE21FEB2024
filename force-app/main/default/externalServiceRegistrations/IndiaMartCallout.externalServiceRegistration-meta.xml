@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>IndiaMartCallout</label>
+    <namedCredentialReference>IndiaMartNamedCreds</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>indiamartinvocaction</name>
+    </operations>
+    <registrationProviderType>SchemaInferred</registrationProviderType>
+    <schema>{&quot;openapi&quot;:&quot;3.0.1&quot;,&quot;info&quot;:{&quot;title&quot;:&quot;IndiaMartCallout&quot;,&quot;description&quot;:&quot;&quot;},&quot;paths&quot;:{&quot;&quot;:{&quot;get&quot;:{&quot;description&quot;:&quot;&quot;,&quot;operationId&quot;:&quot;IndiaMartInvocAction&quot;,&quot;responses&quot;:{&quot;2XX&quot;:{&quot;description&quot;:&quot;&quot;,&quot;content&quot;:{&quot;application/json&quot;:{&quot;schema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;SENDER_NAME&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_MOBILE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_COMPANY&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;QUERY_TIME&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_PHONE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_CITY&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_MOBILE_ALT&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_PHONE_ALT&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_ADDRESS&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;QUERY_PRODUCT_NAME&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;RECEIVER_MOBILE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_COUNTRY_ISO&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;QUERY_MCAT_NAME&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;CALL_DURATION&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_EMAIL&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;QUERY_TYPE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_PINCODE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_STATE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SUBJECT&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;UNIQUE_QUERY_ID&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;QUERY_MESSAGE&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;SENDER_EMAIL_ALT&quot;:{&quot;type&quot;:&quot;string&quot;}}}}}}}}}}}</schema>
+    <schemaType>OpenApi3</schemaType>
+    <serviceBinding>{&quot;host&quot;:&quot;&quot;,&quot;basePath&quot;:&quot;/&quot;,&quot;allowedSchemes&quot;:[],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>4</systemVersion>
+</ExternalServiceRegistration>

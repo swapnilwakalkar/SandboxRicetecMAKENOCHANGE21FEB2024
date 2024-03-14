@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Mill Planner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Mill Planner</value>
+    </caseValues>
+    <layouts>
+        <layout>Day Schedule Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Day Schedule Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>End_Mill_Visit</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Start_Mill_Visit</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Feedback</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Related_Area_selection</name>
+    </validationRules>
+</CustomObjectTranslation>

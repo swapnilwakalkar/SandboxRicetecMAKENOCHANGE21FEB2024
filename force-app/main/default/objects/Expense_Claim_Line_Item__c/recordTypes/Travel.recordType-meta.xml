@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Travel</fullName>
+    <active>true</active>
+    <label>Travel</label>
+    <picklistValues>
+        <picklist>Expense_Type__c</picklist>
+        <values>
+            <fullName>Meal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miscellaneous %26 Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Travel</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mode_of_Transport__c</picklist>
+        <values>
+            <fullName>Auto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Company Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Own Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Train</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Two Wheeler</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rate_per_Unit__c</picklist>
+        <values>
+            <fullName>3%2E5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

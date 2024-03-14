@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Opportunities</fullName>
+    <columns>NAME</columns>
+    <columns>AccountID__c</columns>
+    <columns>Lead_Source__c</columns>
+    <columns>Mill_Type__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Probability__c</columns>
+    <columns>Next_Step__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Description__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>opportunity_Owner__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <label>My Opportunities</label>
+</ListView>

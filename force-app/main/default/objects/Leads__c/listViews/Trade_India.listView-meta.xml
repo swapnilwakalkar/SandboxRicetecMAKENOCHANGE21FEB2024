@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trade_India</fullName>
+    <columns>NAME</columns>
+    <columns>Lead_Source__c</columns>
+    <columns>Company__c</columns>
+    <columns>Email__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Lead_Source__c</field>
+        <operation>equals</operation>
+        <value>TradeIndia</value>
+    </filters>
+    <label>Trade India</label>
+</ListView>

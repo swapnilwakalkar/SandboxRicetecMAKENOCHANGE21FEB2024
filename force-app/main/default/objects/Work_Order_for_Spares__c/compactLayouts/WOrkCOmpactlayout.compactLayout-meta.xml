@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WOrkCOmpactlayout</fullName>
+    <fields>Case__c</fields>
+    <fields>Account_Name__c</fields>
+    <fields>LastModifiedById</fields>
+    <fields>Contact_Person_Name__c</fields>
+    <fields>Contact_Person_Mobile_Number__c</fields>
+    <fields>Issued_ON__c</fields>
+    <fields>Date__c</fields>
+    <label>WOrkCOmpactlayout</label>
+</CompactLayout>

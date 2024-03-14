@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Leads</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Leads</value>
+    </caseValues>
+    <layouts>
+        <layout>Leads Layout</layout>
+        <sections>
+            <label></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Leads</layout>
+        <sections>
+            <label></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>community Leads Layout</layout>
+        <sections>
+            <label></label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Convert</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Convert2a</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Convert_Lead</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Email</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Mobile_Number2_Restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Mobile_Number_Restriction</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Send_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Send_SMSs</name>
+    </webLinks>
+</CustomObjectTranslation>

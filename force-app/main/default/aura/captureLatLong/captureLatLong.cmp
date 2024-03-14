@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,lightning:actionOverride,lightning:isUrlAddressable" access="global" controller="captureLatLongcntrl">
+	<!--define attributes-->
+    <aura:attribute name="latitude" type="Decimal" />
+    <aura:attribute name="longitude" type="Decimal" />
+    <aura:attribute name="status" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--display device latitude and longitude-->
+   <div class="slds-card slds-box slds-theme_inverse" style="background-image: url('/resource/CaptureLocationIMG'); background-size: cover; background-repeat: no-repeat; padding: 20px; border-radius: 15px;">
+    <div class="slds-align_absolute-center" style="height:5rem">
+        Latitude: {!v.latitude} <br/>
+        Longitude: {!v.longitude}<br/>
+        <p/>
+    </div>
+    <div class="slds-align_absolute-center" style="height:5rem">
+        <!--button to call captureGeolocation in controller-->
+        <lightning:button variant="brand" label="Capture Geolocation" onclick="{!c.captureGeolocation}" />
+    </div>
+    </div>
+</aura:component>

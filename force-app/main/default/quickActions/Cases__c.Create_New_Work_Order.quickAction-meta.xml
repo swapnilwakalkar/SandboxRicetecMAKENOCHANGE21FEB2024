@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Create New Work Order</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns/>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <targetObject>Work_Order_for_Spares__c</targetObject>
+    <targetParentField>Case__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

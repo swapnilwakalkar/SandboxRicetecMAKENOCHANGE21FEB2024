@@ -1,0 +1,12 @@
+.THIS .background-container {
+    background-image: url("{!$Resource.CompanyLogo2}"); /* Reference the static resource */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Additional styling properties for the background container */
+}

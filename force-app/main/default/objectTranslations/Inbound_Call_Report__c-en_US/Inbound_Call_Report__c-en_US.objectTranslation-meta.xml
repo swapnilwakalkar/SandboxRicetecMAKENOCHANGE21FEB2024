@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Inbound Call</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Inbound Call</value>
+    </caseValues>
+    <layouts>
+        <layout>Community Inbound Call Report Layout</layout>
+        <sections>
+            <label></label>
+            <section>Caller Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Inbound Call Report Layout</layout>
+        <sections>
+            <label></label>
+            <section>Caller Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Inbound Call Report Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>INBOUND</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Inbound_Call_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>NEW</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>NEW1</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Inbound_Call</name>
+    </webLinks>
+</CustomObjectTranslation>

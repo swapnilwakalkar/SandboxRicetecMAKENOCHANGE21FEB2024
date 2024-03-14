@@ -1,0 +1,263 @@
+<apex:page standardStylesheets="false"  showHeader="false" id="WorkOrder1" standardController="Work_Order_for_Spares__c" extensions="WorkOrderForSparesQuote" renderas="pdf" >
+<head>
+        
+        
+              
+   <c:HeaderForQuotationPDF type="header2">
+                    <div >
+                        <img src="{!URLFOR($Resource.ricetecaddressWO)}" style="width: 380px; height: 130px;" cellspacing="0"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+
+     <c:HeaderForQuotationPDF type="header">
+                    <div style="height: 120px;">
+                          <img src="{!URLFOR($Resource.CompanyLogo6)}" style="width:90px; height:130px"/>
+                        <img src="{!URLFOR($Resource.comlogoWO)}" style="align:top; width 180px;height: 80px;"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+    
+      <c:HeaderForQuotationPDF type="footer">
+                    <div>
+                        <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+                    </div>
+    </c:HeaderForQuotationPDF>
+    
+    
+  
+    
+    
+    
+    
+<apex:form id="form" style="box-shadow: 1px 1px #888888;  padding: 10px;color: DeepGreen;">    
+             <div style="width:100%; height:1.5px; background:black;"></div>
+    <apex:pageBlock >     
+       <table style ="width:100%;" cellspacing="0" >
+           
+       
+              <tr>
+                    <td  style="text-align: center; font-weight: bold; font-size: 15px; max-width:20%; height:auto;
+                     ">QUOTATION </td>              
+                
+                    <td  style="text-align: right; font-weight: bold; font-size: 12px; max-width:20%; height:auto;"
+                    >Original </td>              
+                </tr>
+
+           
+
+                 <div style="width:100%; height:1.5px; background:black;"></div>
+        </table>      
+       
+                   <apex:repeat value="{!Work_Order_for_Spares__c}" var="q">
+           <table style ="width:100%;" cellspacing="0"  >   
+               <tr>                
+                            <td  align="center-Right" style="width: 60%; text-align: left;border: 0.5px solid black;font-size: 12px"> 
+                                                                Customer Name    : {!q.Account_Name__c} <br/>                                                                
+                                                                Address        : {!q.Mill_Address__c}{!q.State__c}  <br/>
+                                                                Phone No      :   {!q.Contact_Person_Mobile_Number__c}  <br/>
+                                                               
+                                                                                                                         
+                            </td>
+                                    
+                     <td align="center-Right" style="width: 40%; text-align: left-center;font-size: 12px;border: 0.5px solid black;">  Quotation No : {!q.Name} D.C. No<br/>
+                                                             Date          : {!q.Date__c}  <br/> PAN No: {!q.PAN_No__c}   <br/>
+                                                             GSTIN    <br/>
+                                                             Tin No. GSTIN   : {!q.GSTIN__c} 
+                                                             HSN CODE    : 84378020    <br/>            
+                                                                                     
+                            </td>
+                        </tr>
+                        </table>
+                        </apex:repeat>
+        <div style="width:100%; height:1.5px; background:black;"></div>
+        <br/>  
+      
+
+
+   <div  align="center" style=" font-size: 12px;border: 1px solid black;page-break-after: auto" > 
+                       
+      
+            <apex:pageBlockTable value="{!op}" var="a" title="spares"                 >
+            
+            <apex:column value="{!a.Sr_No__c}" headerValue="Sr.No"  style="text-align:center;border: 0.4px solid black;width: 5%"/>        
+            <apex:column value="{!a.Product_Code__c}" headerValue="Item Code"     style="border: 0.4px solid black;width: 13%;" width="20%"/>
+            <apex:column value="{!a.Product_Name__c}" headerValue="Description" style="border: 0.4px solid black;width: 25%"  /> 
+                
+             <apex:column value="{!a.Diagram__c}"  headerValue="Drawing"              style="border: 0.4px solid black;width: 20%;"  width="20%"/>       
+    
+            <apex:column value="{!a.Quantity__c}"  headerValue="Quantity" style="border: 0.4px solid black;width: 5%"/>
+             <apex:column value="{!a.RS_EA__c}"  headerValue="Rate" style="border: 0.4px solid black;width: 20%"/>
+              <apex:column value="{!a.Discount_Amount__c}"  headerValue="Disc" style="border: 0.4px solid black;width: 10%"/>
+                <apex:column value="{!a.IGST_Amount__c}"  headerValue="IGST" style="border: 0.4px solid black;width: 10%"/>
+                  <apex:column value="{!a.TPrice__c}"  headerValue="Amount" style="text-align:right;border: 0.4px solid black;width: 25%"/>
+             
+
+            </apex:pageBlockTable>
+         </div>
+<div > 
+        <apex:repeat value="{!Work_Order_for_Spares__c}" var="q" >
+                
+                          <tr>
+                      <td cellspacing="0" style="text-align:right;font-size: 12px;font-weight: bold;width:100%">Basic Order Value:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                           
+                            <td style="text-align:right;font-size: 12px;width: 35%;border: 1px solid black;">{!q.Total_Price__c}</td>
+                       </tr>
+                      
+                        <tr>
+                         
+                         
+                            <td  style="text-align: right;font-size: 12px">Packing Charges @ {!q.Packing_Charges__c}%:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                           
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Packing_Charges_Amount__c}</td>
+                       </tr>
+                      
+                        <tr>
+                            <td  style="text-align: right;font-size: 12px">Forwarding Charges @ {!q.Forwarding_Charges__c}%:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Forwarding_Charges_Amount__c}</td>
+                         
+                            
+                        </tr>
+                        <tr>
+                        
+                            <td  style="text-align: right;font-size: 12px">Commissioning Charges Rs.each for machine :</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Commissioning_Charges_for_each_machine__c}</td>
+                            
+                            
+                         </tr>
+                        <tr>
+                         
+                         
+                            <td  style="text-align: right; font-weight: bold;font-size: 12px">Total Cost : </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Total__c}</td>
+                           
+                           
+                        </tr>
+                        <tr>
+                          
+                         
+                            <td  style="text-align: right;font-size: 12px">Transit Insurance Amount:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Transit_Insurance__c}</td>
+                           
+                           
+                        </tr>
+                        <tr>
+                         
+                         
+                            <td  style="text-align: right;font-size: 12px">IGST {!q.IGST__c}% :</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.IGST_Amount__c}</td>
+                           
+                           
+                       </tr>
+                        <tr>
+                          
+                         
+                            <td  style="text-align: right;font-size: 12px">CGST {!q.CGST__c}% :</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.CGST_Amount__c}</td>
+                            
+                           
+                        </tr>
+                        <tr>
+                      
+                         
+                            <td style="text-align: right;font-size: 12px">SGST {!q.SGST__c}% :</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.SGST_Amount__c}</td>
+                            
+                          
+                        </tr>
+                        <tr>
+                                                   
+                            <td style="text-align: right;font-size: 12px">Transport Charges(TCS):</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.tcs__c}</td>
+                           
+                           
+                        </tr>
+                        <tr>
+                      
+                         
+                            <td style="text-align: right; font-weight: bold;font-size: 12px;">Grand Total:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                           
+                            <td  style="text-align:right;border: 1px solid black;font-size: 12px;width: 25%;">{!q.Grand_Total__c}</td>
+                           
+                           </tr>                                
+                       </apex:repeat>
+                       </div>
+                      
+                 <div style="width:100%; height:1.5px; background:black;"></div>
+                <div style="width:100%;">
+                    <tr>
+                    <td  style="text-align: center; font-size: 12px; height:auto; ">Amount In Words:<b>{!Work_Order_for_Spares__c.Amount_In_Words__c} Rupees Only.</b> </td>           
+                </tr>
+              
+                         <div style="width:100%; height:1.5px; background:black;"></div>
+                    <br/>
+                         
+        <Table style="width:100%;">
+             
+    <tr>                
+                             <td style="text-align:center;font-size: 12px;border: 0.5px solid black;width:50%"> 
+                                                               Receive the above goods as per your DC in good condition
+                      <p></p>
+                      <p></p><br/> <br/> <p></p>
+                      <p></p><br/> <br/>
+                     Receivers Signature and Seal
+                            </td>
+                            
+                                    
+                      <td style="text-align: center;font-size: 12px;border: 0.5px solid black;">
+                     For RICETEC MACHINERY PVT. LTD.     
+                      <p></p>
+                      <p></p><br/> <br/>
+                      <p></p><br/> <br/>
+                     
+                        Authorised Signature                                                             
+                            </td>
+                        </tr>    
+           
+         </Table>
+                
+                <td   style="text-align: center;font-size: 12px;width:100%" >
+                                      All Disputes shall be held at Hyderabad/RangaReddy district jurisdictions only. </td>
+
+
+</div>
+
+
+</apex:pageBlock>
+
+    </apex:form>
+           
+           
+        </head>
+</apex:page>

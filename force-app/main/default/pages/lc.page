@@ -1,0 +1,16 @@
+<apex:page standardController="Leads__c" >
+    <apex:includeLightning />
+    <div  id="LightningCompContainer" />
+   
+    <script>
+        $Lightning.use("c:Lead_Convert_on_Mobile", function() {
+            $Lightning.createComponent("c:leadConvertButton", {
+            },
+            "LightningCompContainer",
+            function(component) {
+               component.set("v.recordId",'{!$CurrentPage.parameters.id}');
+            });
+        });
+ 
+    </script>
+</apex:page>

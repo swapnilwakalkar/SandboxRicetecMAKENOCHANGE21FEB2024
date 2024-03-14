@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Note__c</fullName>
+    <defaultValue>&quot;For all the bought out items like electrical, electronic and etc. warranty, which Parent companies offer, the same will be forwarded to the customers.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Note</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

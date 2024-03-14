@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" controller="LogoutCapture">
+
+</aura:component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X16__c</fullName>
+    <defaultValue>&quot;16.If the service call has completed beyond 4 hours and up to 8 hours full day Service Charges shall be charged along with to &amp; fro charges.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>16</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

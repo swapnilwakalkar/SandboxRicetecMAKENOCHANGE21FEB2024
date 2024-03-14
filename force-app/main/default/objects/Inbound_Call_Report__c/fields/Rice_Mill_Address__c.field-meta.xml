@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rice_Mill_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>Rice_Mill_Name__r.Name__r.Street__c  +&apos;&apos;+  Rice_Mill_Name__r.District__c  +&apos;&apos;+   Rice_Mill_Name__r.Village__c  +&apos;&apos;+   Rice_Mill_Name__r.State__c  +&apos;&apos;+  Rice_Mill_Name__r.Country__c+&apos;&apos;+ Rice_Mill_Name__r.Name__r.Pincode__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Rice Mill Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

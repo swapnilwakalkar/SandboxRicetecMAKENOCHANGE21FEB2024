@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Layout_for_cases</fullName>
+    <fields>Name</fields>
+    <fields>Account_Name__c</fields>
+    <fields>Machine_No__c</fields>
+    <fields>Complaint_Classification__c</fields>
+    <fields>Complaint_Date__c</fields>
+    <fields>OwnerId</fields>
+    <label>Layout for cases</label>
+</CompactLayout>

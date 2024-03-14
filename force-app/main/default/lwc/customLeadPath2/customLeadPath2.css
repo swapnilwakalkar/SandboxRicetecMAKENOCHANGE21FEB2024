@@ -1,0 +1,5 @@
+.custom-popup-content {
+    max-height: 980px; /* Adjust the height as needed */
+    width: 900px;
+    overflow-y: auto;
+}

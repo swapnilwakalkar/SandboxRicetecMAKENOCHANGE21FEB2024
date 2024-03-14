@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Service Agents</name>
+    <queueMembers>
+        <users>
+            <user>rtsf.bhubaneshwar@gmail.com</user>
+            <user>rtkarimnagar@gmail.com</user>
+            <user>rtkasinga@gmail.com</user>
+            <user>rtnizamabad@gmail.com</user>
+            <user>rtcoordinator.south@gmail.com</user>
+            <user>rtkanpur123@gmail.com</user>
+            <user>rtmirzapur123@gmail.com</user>
+            <user>rtpatna1@gmail.com</user>
+            <user>rtpatna2@gmail.com</user>
+            <user>rtrajamundary@gmail.com</user>
+            <user>info@ricetecmachinery.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Service_Recourse_Engineers__c</sobjectType>
+    </queueSobject>
+</Queue>

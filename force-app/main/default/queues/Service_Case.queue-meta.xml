@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Service Case SW</name>
+    <queueMembers>
+        <roleAndSubordinatesInternal>
+            <roleAndSubordinateInternal>Head_Technical</roleAndSubordinateInternal>
+        </roleAndSubordinatesInternal>
+        <roles>
+            <role>Service_Coordinator_Central_India_and_Telangana</role>
+            <role>Service_Coordinator_East_India_and_AP</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

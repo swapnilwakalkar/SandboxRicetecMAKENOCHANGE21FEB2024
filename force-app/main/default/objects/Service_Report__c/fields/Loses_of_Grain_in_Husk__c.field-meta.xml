@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loses_of_Grain_in_Husk__c</fullName>
+    <description>(Tips)</description>
+    <externalId>false</externalId>
+    <label>Loses of Grain in Husk</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

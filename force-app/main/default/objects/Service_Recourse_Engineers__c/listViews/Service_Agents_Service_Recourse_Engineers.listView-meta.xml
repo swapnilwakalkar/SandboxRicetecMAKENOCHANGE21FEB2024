@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Agents_Service_Recourse_Engineers</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Service Agents</label>
+    <queue>Service_Agents</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

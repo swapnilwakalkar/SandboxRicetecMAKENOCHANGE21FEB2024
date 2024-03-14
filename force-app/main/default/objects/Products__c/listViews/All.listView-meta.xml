@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Category__c</columns>
+    <columns>Type__c</columns>
+    <columns>Sub_Category__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Power_in_HP__c</columns>
+    <columns>Unit_Price__c</columns>
+    <columns>Quantity_In_no_s__c</columns>
+    <columns>Discount__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

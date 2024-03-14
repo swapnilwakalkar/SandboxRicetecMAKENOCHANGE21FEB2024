@@ -1,0 +1,98 @@
+<template>
+    <!-- Address Information Header 
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col">
+            <div class="slds-page-header">
+                <h1 class="slds-list_horizontal">
+                    <span class="slds-page-header__title slds-truncate" title="Address Information"
+                        style="width: 100%">Address
+                        Information</span>
+                    <lightning-button class="slds-float_right" label="Edit" title="Edit" slot="actions"
+                        onclick={handleModal}></lightning-button>
+                </h1>
+            </div>
+        </div>
+    </div>-->
+    <!-- Address Information Details
+    <div class="addressInformation">
+        <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName}>
+            <lightning-layout multiple-rows>
+                <template for:each={fieldApiNames} for:item="fieldApiName">
+                    <lightning-layout-item key={fieldApiName} flexibility="auto" padding="around-small" size="6"
+                        large-device-size="6" medium-device-size="6">
+                        <lightning-output-field class="slds-form-element_readonly" field-name={fieldApiName}>
+                        </lightning-output-field>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </lightning-record-edit-form>
+    </div> -->
+    <!-- Address Search Modal
+    <div class="openModal" if:true={openModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="modal-heading-01"
+            aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Address Search</h2>
+                </header> 
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">-->
+                    <lightning-input type="search" variant="label-hidden" class="searchAddress" name="searchAddress"
+                        placeholder="Search Address.." onchange={handleChange} value={selectedAddress}>
+                    </lightning-input>
+                    <!-- Address Recommendations -->
+                    <div if:true={hasRecommendations}>
+                        <div class="address-recommendations" role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+                                role="presentation">
+                                <template for:each={addressRecommendations} for:item="addressRecommendation">
+                                    <li key={addressRecommendation} role="presentation"
+                                        onclick={handleAddressRecommendationSelect}
+                                        data-value={addressRecommendation.place_id} class="slds-listbox__item">
+                                        <span
+                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                            role="option">
+                                            <span class="slds-media__body slds-m-left_xx-small slds-m-bottom_xx-small">
+                                                <div class="slds-grid slds-m-bottom_small">
+                                                    <div class="slds-col slds-size_1-of-10">
+                                                        <lightning-button-icon size="medium" icon-name="utility:checkin"
+                                                            class="slds-input__icon" variant="bare">
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                    <div class="slds-m-left_medium slds-col slds-size_8-of-10">
+                                                        <span
+                                                            class="slds-listbox__option-text slds-listbox__option-text_entity"><b>{addressRecommendation.main_text}</b></span>
+                                                        <span
+                                                            class="slds-listbox__option-text slds-listbox__option-text_entity slds-m-top_xxx-small">{addressRecommendation.secondary_text}</span>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-10"></div>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+               <!-- </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button class="slds-button" label="Cancel" onclick={closeModal} variant="neutral">
+                    </lightning-button>
+                    <lightning-button class="slds-button" label="Save" onclick={handleSearchResult} variant="brand">
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div> -->
+    <!-- Lightning Spinner -->
+    <div class="showSpinner" if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+    </div>
+</template>

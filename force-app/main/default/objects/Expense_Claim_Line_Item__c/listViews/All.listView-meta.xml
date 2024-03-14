@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Rate_per_Unit__c</columns>
+    <columns>Mode_of_Transport__c</columns>
+    <columns>Mill_Planner__c</columns>
+    <columns>Expense_Claim__c</columns>
+    <columns>Expense_Type__c</columns>
+    <columns>Description_of_Claim__c</columns>
+    <columns>Claim_Date__c</columns>
+    <columns>Bill_No__c</columns>
+    <columns>Amounts__c</columns>
+    <columns>Amount__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

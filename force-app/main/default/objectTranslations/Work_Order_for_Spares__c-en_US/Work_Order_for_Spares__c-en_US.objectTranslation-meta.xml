@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>WorkOrder</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Work Order</value>
+    </caseValues>
+    <layouts>
+        <layout>Work Order for Spares Layout</layout>
+        <sections>
+            <label></label>
+            <section>Charges For Spare Quotation Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Add_Related_Spares</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Add_Spares</name>
+    </quickActions>
+    <recordTypes>
+        <label></label>
+        <name>ForNewRecWO</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Record_Detail_Page</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label></label>
+        <name>PreviewWorkOrder</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Preview_Quote</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Spare_Quotation</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Work_Order</name>
+    </webLinks>
+</CustomObjectTranslation>

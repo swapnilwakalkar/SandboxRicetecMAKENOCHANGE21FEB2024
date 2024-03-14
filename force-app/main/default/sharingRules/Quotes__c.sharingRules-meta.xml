@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Model_Quotation_visibility_for_sales_people</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Model Quotation visibility for sales people</label>
+        <sharedTo>
+            <group>Visibility_for_sales_people</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Model_Quotation__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

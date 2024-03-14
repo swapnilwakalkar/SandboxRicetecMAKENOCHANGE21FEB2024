@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <label>New Step Approval 1</label>
+        <name>New_Step_Approval</name>
+    </approvalStep>
+    <emailTemplate>unfiled$public/WorkOrdr</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>WorkOrder.Discount</field>
+            <operation>greaterThan</operation>
+            <value>5</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>FinalUpdate</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Entry_Criteria</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Spares Quotation</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

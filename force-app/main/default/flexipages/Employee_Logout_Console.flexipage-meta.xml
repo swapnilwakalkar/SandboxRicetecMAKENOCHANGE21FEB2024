@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>EmployeeLogout</componentName>
+                <identifier>c_EmployeeLogout</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;Note*&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Employes are requested to login at 9:00 &lt;span style=&quot;color: rgb(116, 116, 116);&quot;&gt;am&lt;/span&gt; and logout at 6:00 pm only.&lt;/li&gt;&lt;li&gt;After 9:00 am it is marked as absent.&lt;/li&gt;&lt;li&gt;Make sure follow the company rules and standards as requested.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Thank you.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Have a Great day.&lt;/li&gt;&lt;/ol&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Employee Logout Console</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

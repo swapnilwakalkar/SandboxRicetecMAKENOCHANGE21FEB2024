@@ -1,0 +1,25 @@
+<apex:page showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:includeLightning />    
+        <div id="LightningComponentid" />    
+        <script>
+            function buttonClick() {
+                console.log('Method Called');
+                openLwc();
+            }
+        
+            function openLwc() {
+                $Lightning.use(null, function() { // Remove the app name reference
+                    $Lightning.createComponent("c:sampleleadbutton",
+                    {},
+                    "LightningComponentid",
+                    function(cmp) {
+                        console.log('LWC Component added in VF page');
+                    });
+                });
+            }
+        </script>
+        
+        <apex:commandButton title="Convert2a1" value="Convert2a1" onclick="buttonClick();" />
+    </apex:form>
+</apex:page>

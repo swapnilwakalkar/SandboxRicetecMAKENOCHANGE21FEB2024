@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amounts__c</fullName>
+    <externalId>false</externalId>
+    <formula>Distance_Travelled_in_Kms__c * 
+    IF(
+        ISPICKVAL(Rate_per_Unit__c, &quot;3.5&quot;), 3.5,
+        IF(
+            ISPICKVAL(Rate_per_Unit__c, &quot;8&quot;), 8,
+                                    0  /* Default value if Rate_per_Unit__c doesn&apos;t match any specified values */
+                                )
+                            )</formula>
+    <label>Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,13 @@
+<apex:page standardController="Service_Report__c" extensions="Servicer" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock title="Service Call Report" mode="detail" tabStyle="Service_Report__c" >
+    <apex:outputPanel >
+        <apex:iframe height="350px"  width="100%" src="/apex/ServicerPDF?id={!servicerId}" frameborder="true" scrolling="true"/>
+    </apex:outputPanel>
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton style="width:10%; text-align:Center; border-radius: 5%; block-size: 50px; box-shadow: 5px 10px #888888; color: DeepGreen; font-size: Auto; background-color: #92a8d1;" value="Save" action="{!save}"/>
+                <apex:commandButton style="width:10%; text-align:Center; border-radius: 5%; block-size: 50px; box-shadow: 5px 10px #888888; color: DeepGreen; font-size: Auto; background-color: #f18973;" value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

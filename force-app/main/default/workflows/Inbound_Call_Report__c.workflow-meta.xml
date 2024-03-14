@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Inbound_Call_Email_Alert_for_Sales</fullName>
+        <ccEmails>surekha.sfdc99@gmail.com</ccEmails>
+        <ccEmails>surekha.yasam@lancesoft.in</ccEmails>
+        <description>Inbound Call Email Alert for Sales</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>SalesGroup</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Sales_Group_Email_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Inbound_Call_Email_Alert_for_Service</fullName>
+        <ccEmails>surekha.yasam@lancesoft.in</ccEmails>
+        <ccEmails>surekha.sfdc99@gmail.com</ccEmails>
+        <description>Inbound Call Email Alert for Service</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ServiceGroup</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Email_Alert_to_Service_Group</template>
+    </alerts>
+    <alerts>
+        <fullName>Inbound_Call_Email_Alert_for_Spares</fullName>
+        <ccEmails>surekha.yasam@lancesoft.in</ccEmails>
+        <ccEmails>surekha.sfdc99@gmail.com</ccEmails>
+        <description>Inbound Call Email Alert for Spares</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>SparesGroup</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Email_Alert_to_Spares_Group</template>
+    </alerts>
+</Workflow>

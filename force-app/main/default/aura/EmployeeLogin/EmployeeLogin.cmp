@@ -1,0 +1,68 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId"
+                controller="Attendancecapture">
+    <aura:dependency resource="c:EmployeeLogin" type="COMPONENT"/>
+    
+    <aura:attribute name="latitude" type="Decimal" />
+    <aura:attribute name="longitude" type="Decimal" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="isLoginButtonDisabled" type="Boolean" default="false" />
+    <aura:attribute name="popupMessage" type="String" default="" />
+    <aura:attribute name="mapMarkers" type="Object" />
+    <aura:attribute name="zoomLevel" type="Integer" />
+    <aura:attribute name="simpleRecord" type="Object" />
+    <aura:attribute name="recordError" type="String" />
+    <aura:attribute name="mapReady" type="Boolean" default="false"/>
+    <aura:attribute name="address" type="String" />
+    <aura:attribute name="formattedAddress" type="String" />
+
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Background card with a background image -->
+    <div class="slds-card slds-box slds-theme_inverse" style="background-image: url('/resource/EmployeeCommunity'); background-size: cover; background-repeat: no-repeat; padding: 20px; border-radius: 15px;">
+        <!-- Content inside the card -->
+        <div class="slds-card__body slds-align_absolute-center" style="height: 9rem; text-align: center; width: 100%; color: White; font-size: 24px;">
+            <h1><b><u><i>Welcome to Ricetec Company</i></u></b></h1> <br/>
+        </div>
+        <div class="slds-card__body slds-align_absolute-center" style="height: 5rem; width: 100%;">
+            <!-- Button to call captureGeolocation in controller for login -->
+            <aura:if isTrue="{!v.isLoginButtonDisabled}">
+                <lightning:button variant="brand" label="LOGGED IN..." disabled="true" class="slds-button_inverse"/>
+            </aura:if>
+            <aura:if isTrue="{!not(v.isLoginButtonDisabled)}">
+                <lightning:button variant="brand" label="Login" onclick="{!c.captureLogin}" class="slds-button_inverse"/>
+            </aura:if>
+            <!-- Button to call captureLogout in controller for logout -->
+            <lightning:button variant="success" label="Logout" onclick="{!c.captureLogout}" class="slds-button_success"/>
+        </div>
+    </div>   
+    <!-- Custom div for displaying popup message -->
+    <div class="slds-notify_container slds-is-relative">
+        <aura:if isTrue="{!not(empty(v.popupMessage))}">
+            <div class="slds-notify slds-notify_alert slds-theme_success" role="alert">
+                <span class="slds-assistive-text">Success</span>
+                {!v.popupMessage}
+                <button class="slds-button slds-button_icon slds-notify__close" title="Close" onclick="{!c.closePopup}">
+                    <lightning:icon iconName="utility:close" size="small" />
+                </button>
+            </div>
+        </aura:if>
+    </div>
+    
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      mode="VIEW"
+                      recordId="{!v.recordId}"
+                      fields="Name,Logout_Latitude__c,Logout_Longitude__c"
+                      targetFields="{!v.simpleRecord}"
+                      recordUpdated="{!c.handleRecordUpdated}"
+    />
+    
+    <lightning:card iconName="action:map" title="Representative In-House Map">
+       <div class="slds-p-horizontal_small" style="background-image: url('/resource/employee'); background-size: cover; background-repeat: no-repeat;padding: 20px;border-radius: 15px; box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);">
+        <p>
+           <lightning:map mapMarkers="{!v.mapMarkers}" zoomLevel="{!v.zoomLevel}" />
+        </p>
+       </div>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,152 @@
+<apex:page id="WorkOrder1" standardController="Work_Order_for_Spares__c" extensions="WorkOrderForSpares" renderas="pdf">
+<apex:form >
+<head>
+<body>
+            <div style=" margin: 20px 0;">
+                
+               <c:HeaderForQuotationPDF type="header2">
+                    <div >
+                        <img src="{!URLFOR($Resource.ricetecaddressWO)}" style="width: 380px; height: 130px;" cellspacing="0"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+
+     <c:HeaderForQuotationPDF type="header">
+                    <div style="height: 120px;">
+                          <img src="{!URLFOR($Resource.CompanyLogo6)}" style="width:90px; height:130px"/>
+                        <img src="{!URLFOR($Resource.comlogoWO)}" style="align:top; width 180px;height: 80px;"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+    
+      <c:HeaderForQuotationPDF type="footer">
+                    <div>
+                        <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+                    </div>
+    </c:HeaderForQuotationPDF>
+
+
+<apex:pageBlock >
+<table style ="width:100%; border: 1px solid black">
+           
+           
+                <tr>
+                   <td colspan="6" style="text-align: center; font-weight: bold; font-size: 15px; 
+                    border-bottom: 1px solid black; background-color:Gray;">Work Order For Spares</td>
+                </tr>
+
+ <tr>
+                    <td colspan="6" style=" font-size: 12px;text-align:left;Width:100%"><b><u><u>Customer Details</u></u></b></td>
+               </tr>
+
+
+           
+                   <apex:repeat value="{!Work_Order_for_Spares__c}" var="q">
+              
+               <tr>                
+                            <td  align="center-Right" style="text-align: left;font-size: 12px;"> 
+                                                                Rice Mill Name           : {!q.Account_Name__c} <br/>                                                                
+                                                                Rice Mill Address        : {!q.Mill_Address__c} <br/>
+                                                                Contact Person Name      : {!q.Contact_Person_Name__c}  <br/>
+                                                                Contact Person Mobile No.: {!q.Contact_Person_Mobile_Number__c}                              
+                            </td>
+                                    
+                            <td  align="center-Right" style="text-align: center-Right;font-size: 12px;">  Work Order No : {!q.Name}<br/>
+                                                             Issued On     : {!q.Issued_ON__c} <br/>
+                                                             Product No    : {!q.Product_Machine_Number__c} <br/>  
+                                                             Date          : {!q.Date__c}                            
+                            </td>
+                        </tr>
+                        </apex:repeat>
+                         
+                         <br/>
+                      
+              
+        
+  <tr>
+                        <td colspan="6" style=" text-align:center;Width:100%;font-size: 12px;"><b><u><u>SPARE AND MACHINERY PART ORDER PERTICULARS:</u></u></b></td>
+               </tr>
+
+   <div align="center" style="font-size: 12px; border: 1px solid black;width: 100%; margin: 20px 0;" > 
+                       
+      
+            <apex:pageBlockTable value="{!op}" var="a" title="spares"                style="border: 1px solid black;width: 100%;" >
+            
+            <apex:column value="{!a.Sr_No__c}" headerValue="Sr.No"                   style="border: 1px solid black;width: 10%"/>        
+            <apex:column value="{!a.Product_Code__c}" headerValue="Product Code"     style="border: 1px solid black;width: 20%;" width="20%"/>
+        
+
+               <apex:column value="{!a.Product_Name__c}" headerValue="Spare Description" style="border: 1px solid black;width: 20%"  /> 
+                <apex:column value="{!a.Quantity__c}" style="border: 1px solid black;width: 20%"/>
+                <apex:column value="{!a.Required_On_or_Before__c}" headerValue="On or Before" style="border: 1px solid black;width: 20%"/> 
+                  <apex:column value="{!a.Diagram__c}"  headerValue="Drawing"              style="border: 1px solid black;width: 20%;"  width="20%"/>       
+    
+               
+
+            </apex:pageBlockTable>
+        </div>  
+    </table>
+      
+        <br/>
+        
+     
+        
+            <table cellpadding="6" style ="width:100%; border: 1px solid black;font-size: 12px;">
+               <tr>
+                    <td colspan="6" style=" text-align:left;Width:100%"><b>Notes: </b></td>
+               </tr>
+         
+         
+     <!--    
+             
+               <tr>
+                    <td colspan="6" style="text-align: left;" >1. Spare component drawings are should be enclosed along with work order.</td>
+               
+               </tr>
+               <tr>
+                    <td colspan="6" style="text-align: left;">   2. Service stamp should be on drawings.</td>
+                    
+               </tr>
+               <tr>
+                    <td colspan="6" style="text-align: left;">   3. QC Inspection should be done 100% and maintained Inspection report.</td>
+                   
+               </tr>
+               <tr>
+                    <td colspan="6" style="text-align: left;">   4. Final Product / Components are to be handover to Service department by QC department</td>
+                    </tr>
+               <tr>
+                    <td colspan="6" style="text-align: left;">5. All documents are to be handover to Service department like 
+                      A) Work order x-rax copy.
+                       B) Inspection report x-rax copy
+                        C) Drawings</td>
+                 </tr>
+                                  
+                                  
+               <tr>
+                    <td colspan="6" style="text-align: left;">   6. Service Concern should file all the above (Sl No.5) documents properly with identification</td>
+                </tr>
+                
+                -->
+         <tr>
+                    <td colspan="6" style=" text-align:left;"> {!Work_Order_for_Spares__c.Terms_And_Condition__c}</td>
+               </tr>
+
+                
+                
+</table>
+    
+      
+      <br/>
+        
+
+<td style="font-weight: bold; text-align: left-bottom; page-break-after: always;">Authorised by:-</td>
+
+</apex:pageBlock>
+
+</div>
+       
+ </body>
+ </head>     
+      
+    </apex:form>
+    
+    
+</apex:page>

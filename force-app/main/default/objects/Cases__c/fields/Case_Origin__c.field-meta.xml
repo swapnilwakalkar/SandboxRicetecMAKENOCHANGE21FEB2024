@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Origin__c</fullName>
+    <externalId>false</externalId>
+    <label>Case Origin</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Telephonic enquiries</fullName>
+                <default>false</default>
+                <label>Telephonic enquiries</label>
+            </value>
+            <value>
+                <fullName>Field enquiries</fullName>
+                <default>false</default>
+                <label>Field enquiries</label>
+            </value>
+            <value>
+                <fullName>Dealers</fullName>
+                <default>false</default>
+                <label>Dealers</label>
+            </value>
+            <value>
+                <fullName>Mill Operators</fullName>
+                <default>false</default>
+                <label>Mill Operators</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

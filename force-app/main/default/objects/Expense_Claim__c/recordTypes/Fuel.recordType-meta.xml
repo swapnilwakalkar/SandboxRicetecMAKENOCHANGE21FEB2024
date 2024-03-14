@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fuel</fullName>
+    <active>true</active>
+    <label>Fuel</label>
+    <picklistValues>
+        <picklist>Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Expenses__c</picklist>
+        <values>
+            <fullName>Fuel</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Submission_Status__c</picklist>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X8__c</fullName>
+    <defaultValue>&quot;8.For any enquiry in regard to Spares, please Mail on spares@ricetecmachinery.com  or  Contact No: +91 9440624439/38.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>8.</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

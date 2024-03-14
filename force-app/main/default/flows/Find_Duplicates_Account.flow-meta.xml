@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <name>Mobile_Number</name>
+        <label>Mobile Number</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>Mobile1</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Mobile__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Account_Records</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>ErrMsg</name>
+        <label>ErrMsg</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <customErrorMessages>
+            <errorMessage>DUPLICATES DETECTED</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Duplicated_Decesion</name>
+        <label>Duplicated Decesion</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Duplicates_Detected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_Records.Mobile__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ErrMsg</targetReference>
+            </connector>
+            <label>Duplicates Detected</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Find Duplicates Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Find Duplicates Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account_Records</name>
+        <label>Get Account Records</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Duplicated_Decesion</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Mobile__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Mobile1</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Mobile_Number</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>Mobile1</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

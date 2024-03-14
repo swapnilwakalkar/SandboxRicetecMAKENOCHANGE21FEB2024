@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rate_per_Unit__c</fullName>
+    <externalId>false</externalId>
+    <label>Rate per Unit</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Mode_of_Transport__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>3.5</fullName>
+                <default>false</default>
+                <label>3.5</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>8</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Two Wheeler</controllingFieldValue>
+            <valueName>3.5</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Own Car</controllingFieldValue>
+            <valueName>8</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

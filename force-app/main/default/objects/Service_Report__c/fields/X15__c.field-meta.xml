@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X15__c</fullName>
+    <defaultValue>&quot;15.If the service call has completed between 0-4 hours, half Service Charges should be paid along with To &amp; Fro Charges.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>15</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

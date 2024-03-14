@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Proforma Invoice</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Proforma Invoice</value>
+    </caseValues>
+    <layouts>
+        <layout>Proforma Invoice Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Proforma Invoice Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Invoice</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>ViewOrder2</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>View_Order_Invoice</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>View_Quotation_Invoice</name>
+    </webLinks>
+</CustomObjectTranslation>

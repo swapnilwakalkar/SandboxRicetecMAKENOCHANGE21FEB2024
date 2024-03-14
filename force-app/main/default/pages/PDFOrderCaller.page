@@ -1,0 +1,13 @@
+<apex:page standardController="Order__c" extensions="PDFOrderPage" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock title="Order Content" mode="edit" >
+    <apex:outputPanel >
+        <apex:iframe height="350px"  width="100%" src="/apex/PDFOrder?id={!ordercaller}" frameborder="true"/>
+    </apex:outputPanel>
+             <apex:pageBlockButtons location="bottom">
+                <apex:commandButton style="width:10%; text-align:Center; border-radius: 5%; block-size: 50px; box-shadow: 5px 10px #888888; color: DeepGreen; font-size: Auto; background-color: #92a8d1;" value="Save" action="{!save}"/>
+                <apex:commandButton style="width:10%; text-align:Center; border-radius: 5%; block-size: 50px; box-shadow: 5px 10px #888888; color: DeepGreen; font-size: Auto; background-color: #f18973;" value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+           </apex:pageBlock>
+    </apex:form>
+</apex:page>

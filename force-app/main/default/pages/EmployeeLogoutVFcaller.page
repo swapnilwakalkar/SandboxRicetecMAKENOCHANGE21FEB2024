@@ -1,0 +1,15 @@
+<apex:page id="EmployeeLogout" standardController="Attendance__c">
+    <apex:includeLightning />
+    <div id="employeeLogoutContainer"></div>
+    <script>
+        $Lightning.use("c:RICETEC_Lightning", function() {
+            $Lightning.createComponent("c:EmployeeLogout",
+                {},
+                "employeeLoginContainer",
+                function(cmp) {
+                    // Component created callback
+                }
+            );
+        });
+    </script>
+</apex:page>

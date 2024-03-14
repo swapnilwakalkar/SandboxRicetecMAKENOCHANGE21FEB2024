@@ -1,0 +1,386 @@
+<apex:page standardStylesheets="false"  showHeader="false"  id="MyQuotePDF" standardController="Quotes__c" extensions="QuotepController" renderAs="pdf"> 
+    <head>
+        <body>
+            <div style="page-break-after: always; margin: 20px 0;">
+                
+                <c:HeaderForQuotationPDF type="header" > 
+                    <div >
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogo)}" style="width:250px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="header2" > 
+                    <div >
+                        <img src="{!URLFOR($Resource.RicetecHeaderLogoRight)}" style="width:90px; height:93px"/>
+                    </div>
+                </c:HeaderForQuotationPDF>
+                <c:HeaderForQuotationPDF type="footer" >
+                    <div style="text-align: center; margin-bottom:20px; height:100px;">
+                        <img src="{!URLFOR($Resource.LatestFooter)}" style="width: 700px; height: 60px;" />
+                    </div>
+                </c:HeaderForQuotationPDF>
+                
+                <table  style="border: 1px solid black; width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px;" cellspacing="0" cellpadding="5">
+                    <apex:repeat value="{!quote}" var="q"> 
+                        <tr>                
+                            <td  style="text-align: right;">Date : 
+                                <apex:outputText value="{0,date,long}">
+                                    <apex:param value="{!q.Date__c}"/>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>                
+                            <td style="text-align: left;">Ref: RMIPL/UP/454/JULY/23-24<br/>
+                                TIN No: 36230277057 <br/>
+                                GSTI No: 36AALCR7953H1ZT<br/>   
+                                HSN CODE: 84378020  <br/>
+                                EMAIL ID: sales@ricetecmachinery.com<br/>   
+                            </td>
+                        </tr>
+                        <tr>                
+                            <td style="text-align: left;">To <br/>{!q.BillToName__c}<br/>
+                                {!q.BillingStreet__c} {!q.Village__c} {!q.District__c}<br/>
+                                {!q.Territory__c} {!q.BillingStateProvince__c} {!q.BillingCountry__c} {!q.BillingZipPostalCode__c}<br/>
+                                Cell: {!q.Phone__c}<br/>
+                                GSTIN: {!q.GSTIN__c}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><br/>
+                                Kind Attn: {!q.Contact_Name2__c}<br/>               
+                                Sub: Quotation Rice Mill Machinery.</td>
+                        </tr>
+                        
+                        <tr>                
+                            <td style="text-align: left;" > Dear Sir,<br/><br/>
+                                We are very much thankful for showing interest in our RICETECH brand Rice Mill Machinery Products. With                 
+                                reference to the discussions you had with us, we are herewith attaching the formal quotation for RICE MILL                  
+                                MACHINERY<br/><br/>         
+                                
+                                RICETECH MACHINERY INDIA PRIVATE LIMITED, is the leading manufacturer, supplier and exporter of grain                   
+                                processing machinery. RICETECH is established in the year 2004 with the vision to become world class                    
+                                manufacturer of food processing machinery, supplying best quality and high technology machinery at affordable                   
+                                cost. With state-of-the-art technology, providing end-to-end solutions, highly skilled and ethical business                 
+                                practices make us different from others. Custom made solutions and cutting edge technology, cost effective                  
+                                prices make us the first choice of our customers.<br/><br/>                 
+                                
+                                With over 3000+ satisfied customers all over India, we are exporting our machinery to countries like Srilanka,                  
+                                Nepal, Bangladesh and Myanmar.<br/><br/>                    
+                                
+                                At RICETECH excellence is not just an ideal but an on-going process to excel with innovation in every stage of                  
+                                operations, well planned production schedules, inventory and logistics management, we effectively deliver our                   
+                                machinery in time.<br/><br/>                    
+                                
+                                We hope you are satisfied with our quotation and request you to release your Purchase Order at the earliest.                    
+                                <br/><br/>
+                                
+                                Thanking you,<br/>                  
+                                For RICETECH Machinery India Pvt.Ltd.
+                            </td>
+                        </tr>
+                        <tr>                
+                            <td style="text-align: left;">Authorized Signatory<br/><br/></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; font-weight: bold; text-decoration: underline;">
+                                For Any clarifications please feel free to contact us. Ph: 9440624430 - 9440624435<br/><br/><br/><br/><br/><br/>
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+            <div style="page-break-after: always; margin: 20px 0;">
+                <apex:repeat value="{!quote}" var="q">
+                    <center> 
+                        <h4><u>QUOTATION FOR A {!q.Name}</u> </h4>
+                    </center>
+                </apex:repeat>
+                <table style="font-size: 13px; -fs-table-paginate: paginate; border-spacing: 0;" border="1" cellspacing="0" cellpadding="5" width="100%">
+                    <thead style="display: table-header-group;">
+                        <tr>
+                            <th rowspan="2" style="font-weight: bold; text-align: center;">S No</th>
+                            <th rowspan="2" style="font-weight: bold; text-align: center;">Machine Code</th>
+                            <th rowspan="2" style="font-weight: bold; text-align: center;" width="60%">Description</th>
+                            <th colspan="2" style="font-weight: bold; text-align: center;">QUOTED</th>
+                            <th rowspan="2" style="font-weight: bold; text-align: center;">Qty Nos</th>
+                            <th colspan="2" style="font-weight: bold; text-align: center;">FINAL</th>
+                            <th rowspan="2" style="font-weight: bold; text-align: center;">Power in HP</th>
+                        </tr>  
+                        <tr>
+                            <th style="font-weight: bold; text-align: center;">Unit Price</th>
+                            <th style="font-weight: bold; text-align: center;">Quoted Price</th>
+                            <th style="font-weight: bold; text-align: center;">Unit Price</th>
+                            <th style="font-weight: bold; text-align: center;">Final Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:variable var="rowNumber" value="{!1}" />
+                        <apex:repeat value="{!op}" var="o">
+                            <tr>
+                                <td style="text-align: center;">{!rowNumber}</td>
+                                <td>{!o.ProductName__c}</td>
+                                <td>{!o.Product_Name__c}</td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="{0, number, ##,##,##,##,###}">
+                                    <apex:param value="{!o.Unit_Price__c}" />
+                                    </apex:outputText></td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="{0, number, ##,##,##,##,###}">
+                                    <apex:param value="{!o.QuotedQ__c}" />
+                                    </apex:outputText></td>
+                                <td style="text-align: center;">{!o.Quantity__c}</td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="{0, number, ##,##,##,##,###}">
+                                   
+                                        <apex:param value="{!IF(o.Discount__c != 0, o.Calculated_Unit_Price__c,
+                             IF(o.Discount__c == 0 && o.Discounted_Unit_Price__c == 0, o.Unit_Price__c,
+                                o.Discounted_Unit_Price__c))}" />
+
+
+                                    </apex:outputText></td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="{0, number, ##,##,##,##,###}">
+                                    <apex:param value="{!o.FinalF__c}" />
+                                    </apex:outputText></td>
+                                <td style="text-align: center;">{!o.PowerHP__c}</td>
+                            </tr>
+                            <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                            <apex:outputPanel layout="none" style="page-break-before: always;" rendered="{!MOD(rowNumber, 15) == 0}" />
+                        </apex:repeat>
+                    </tbody>
+                    <apex:repeat value="{!quote}" var="q">
+                        <tr>
+                            <td colspan="3" style="text-align: right; font-weight: bold;">Sub Cost :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Quoted}" rendered="{!NOT(ISNULL(q.QuotedQQ__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Subcost}" rendered="{!NOT(ISNULL(q.FinalFF__c))}" /></td>
+                            <td style="text-align: center;">{!q.Total_PowerPP__c}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Packing Charges :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!pack}" rendered="{!NOT(ISNULL(q.PackingCharge__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!pack}" rendered="{!NOT(ISNULL(q.PackingCharge__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Packing Charges @ {!q.Packing_Charges__c}%:</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!packchargeper}" rendered="{!NOT(ISNULL(q.Packing_Charges_Amount__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!packingchargeper}" rendered="{!NOT(ISNULL(q.Packing_Charges_AmountF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Forwarding Charges :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Forwardingcharges}" rendered="{!NOT(ISNULL(q.ForwardingCharge__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Forwardingcharges}" rendered="{!NOT(ISNULL(q.ForwardingCharge__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Forwarding Charges @ {!q.Forwarding_Charges__c}%:</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Forwardingchargeamount}" rendered="{!NOT(ISNULL(q.Forwarding_Charges_Amount__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Forwardingchargeper}" rendered="{!NOT(ISNULL(q.Forwarding_Charges_AmountF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Commissioning Charges Rs.{!q.Commissioning_Charges__c} each for {!q.Machine_Required__c} machine :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!commisionquote}" rendered="{!NOT(ISNULL(q.Total_Commissioning_Charges__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!commissioning}" rendered="{!NOT(ISNULL(q.Total_Commissioning_Charges__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right; font-weight: bold;">Total Cost : </td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Totalcostquo}" rendered="{!NOT(ISNULL(q.Total_Cost__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!Total}" rendered="{!NOT(ISNULL(q.Total_CostF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">Transit Insurance @ {!q.Transit_Insurance__c}% :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!transientquo}" rendered="{!NOT(ISNULL(q.Transit_Insurance_Charges__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!transient}" rendered="{!NOT(ISNULL(q.Transit_Insurance_ChargesF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">IGST {!q.IGST__c}% :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!IGSTquo}" rendered="{!NOT(ISNULL(q.IGST_Amount__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!IGST}" rendered="{!NOT(ISNULL(q.GST_AmountF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">CGST {!q.CGST__c}% :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!CGSTquo}" rendered="{!NOT(ISNULL(q.SGST_Amount__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!CGST}" rendered="{!NOT(ISNULL(q.SGST_Amount_Final__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right;">SGST {!q.SGST__c}% :</td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!SGSTquo}" rendered="{!NOT(ISNULL(q.SGST_Amount__c))}" /></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;"><apex:outputText value="{!SGST}" rendered="{!NOT(ISNULL(q.SGST_Amount_Final__c))}" /></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: right; font-weight: bold;">Grand Total</td>
+                            <td colspan="2" style="text-align: right;"><apex:outputText value="{!GrandTotalquo}" rendered="{!NOT(ISNULL(q.Grand_Total__c))}" /></td>
+                            <td ></td>
+                            <td colspan="2" style="text-align: right;"><apex:outputText value="{!GrandTotal}" rendered="{!NOT(ISNULL(q.Grand_TotalF_c__c))}" /></td>
+                            <td></td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+                <br/>
+                <tr>
+                    <td style="font-size: 13px;">
+                        Thanking you,<br/>      
+                        For RICETECH Machinery India Pvt.Ltd.   
+                        <br/>
+                        Authorized Signatory<br/><br/>  
+                    </td>
+                </tr>
+            </div>
+            <div style="page-break-after: always; margin: 20px 0;">
+            </div>
+            <br/>
+            <table  style="border: 1px solid black; width: 100%;" cellspacing="0" cellpadding="5">
+                <table style="font-size: 13px;">
+                    <apex:repeat value="{!quote}" var="q">
+                        <tr>
+                            <th style="font-weight: bold; text-align: left; white-space: nowrap;"><u>TERMS AND CONDITIONS:</u></th>
+                        </tr>
+                        <tr>
+                            <td>1. Price :</td>
+                            <td>{!q.Price__c}</td>
+                        </tr>
+                        <tr>
+                            <td><br/>2. Forwarding :</td>
+                            <td><br/>{!q.Forwarding__c}</td>
+                        </tr>
+                        <tr>
+                            <td><br/>3. Sales Tax :</td>
+                            <td><br/>{!q.Sales_Tax__c}</td>
+                        </tr>
+                        <tr>
+                            <td>4. Payment :</td>
+                            <td><br/><br/>{!q.Payment__c}</td>
+                        </tr>
+                        <tr>
+                            <td><br/>5. Delivery :</td>
+                            <td><br/>{!q.Delivery__c}</td>
+                        </tr>
+                        <tr>
+                            <td><br/>6. Freight :</td>
+                            <td><br/>{!q.Freight__c}</td>
+                        </tr>
+                        <tr>
+                            <td>7. Warranty :</td>
+                            <td><br/>{!q.Warranty__c}</td>
+                        </tr>
+                        <tr>
+                            <td><br/>8. Validity :</td>
+                            <td><br/>{!q.Validity__c}</td>
+                        </tr>
+                        <br/><br/>
+                        <center>
+                            <p style="font-size: 13px; font-weight: bold;">
+                                Note: {!q.Note__c}
+                            </p>
+                        </center>
+                    </apex:repeat>
+                </table>
+                <!--<table style="font-size: 13px;">
+<tr>
+<th style="font-weight: bold; text-align: left; white-space: nowrap;"><u>TERMS AND CONDITIONS:</u></th>
+</tr>
+<tr>
+<td>1. Price :</td>
+<td>Ex-our works, at Hyderabad.</td>
+</tr>
+<tr>
+<td><br/>2. Forwarding :</td>
+<td><br/>Included.</td>
+</tr>
+<tr>
+<td><br/>3. Sales Tax :</td>
+<td><br/>Included.</td>
+</tr>
+<tr>
+<td>4. Payment :</td>
+<td><br/><br/>30% as advance along with your purchase Order and balance 70% against proforma invoice prior to dispatch. (All the payments should be drawn in favour of "RICETECH Machinery India Pvt.Ltd." Payable at Hyderabad.)</td>
+</tr>
+<tr>
+<td><br/>5. Delivery :</td>
+<td><br/>4 to 6 weeks.</td>
+</tr>
+<tr>
+<td><br/>6. Freight :</td>
+<td><br/>To pay basis.</td>
+</tr>
+<tr>
+<td>7. Warranty :</td>
+<td><br/>We accept responsibilities of manufacturing defects only for a period of One year from the date of delivery.</td>
+</tr>
+<tr>
+<td><br/>8. Validity :</td>
+<td><br/>This quotation is valid for 30 days, unless extended.</td>
+</tr>
+</table>
+<br/><br/>
+<center>
+<p style="font-size: 13px; font-weight: bold;">
+Note: For all the bought out items like electrical, electronic and etc. warranty,
+</p>
+</center>
+<center>
+<p style="font-size: 13px; font-weight: bold;">
+which Parent companies offer, the same will be forwarded to the customers.
+</p>
+</center>-->
+                <br/><br/><br/><br/>
+                <table style="font-size: 13px;">
+                    <tr>
+                        <td colspan="10" style="text-align: left;">Thanking you,</td>
+                    </tr>
+                    <tr>                
+                        <td colspan="10" style="text-align: left;">For RICETECH Machinery India Pvt.Ltd.</td>
+                    </tr>
+                    <br/><br/>  
+                    <tr>                
+                        <td colspan="10" style="text-align: left; font-size: 13px;">Authorized Signatory</td>
+                    </tr>
+                    <br/><br/>
+                    <tr>
+                        <td style="font-size: 13px; font-weight: bold;">Hyderabad is the place of Fulfillment and jurisdiction for all Business Transactions covered by above Term and conditions.</td>
+                    </tr>
+                </table>
+            </table>
+        </body>
+    </head>
+</apex:page>
